@@ -1,0 +1,44 @@
+.container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.icon {
+    position: absolute;
+    left: 0px;
+}
+
+.datePicker {
+    width: 90px;
+    margin: 0;
+    padding-left: 25px;
+    font-weight: 700;
+    line-height: 1.67;
+    color: inherit;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        width: 104px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .datePicker {
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .container {
+        margin-right: 0px;
+        margin-left: 0;
+    }
+}
