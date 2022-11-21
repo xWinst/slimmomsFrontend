@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import s from './Modal.module.css';
 import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-// import { useWindowWidth } from '@react-hook/window-size';
 import { useWidth } from '../../hooks/useWidth';
 const modalRoot = document.querySelector('#modal-root');
 
@@ -28,7 +27,7 @@ const Modal = ({ onClose, children }) => {
             onClose();
         }
     };
-    // const onlyWidth = useWindowWidth();
+
     const onlyWidth = useWidth();
 
     return createPortal(

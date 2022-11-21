@@ -40,7 +40,7 @@
         height: 572px;
         margin-top: 0;
         border-radius: 25px;
-        background-image: url('../../images/mainPage/GreenLaptop.png');
+        background-image: url('../../images/GreenLaptop.png');
         background-position: bottom right;
         background-repeat: no-repeat;
         padding: 40px 20px;
@@ -66,42 +66,3 @@
 .btnCloseModal {
     cursor: pointer;
 }
-
-/* ///OLD */
-
-/* .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1200;
-}
-
-.modal {
-    position: relative;
-    width: 380px;
-    height: 194px;
-    max-width: calc(100vw - 40px);
-    max-height: calc(100vh - 24px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: var(--bg-color);
-    border-radius: 30px;
-    box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
-
-    animation: appear 0.3s linear forwards;
-    transform: scale(0.3);
-}
-
-@keyframes appear {
-    to {
-        transform: scale(1);
-    }
-} */
