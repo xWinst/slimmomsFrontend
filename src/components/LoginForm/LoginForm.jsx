@@ -1,9 +1,11 @@
 import s from './LoginForm.module.css';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { logIn } from 'redux/userOperations';
 
 const LoginForm = () => {
+    const dispatch = useDispatch();
     const [formFields, setFormFields] = useState({
-        name: '',
         email: '',
         password: '',
     });
@@ -15,7 +17,6 @@ const LoginForm = () => {
 
     const reset = () => {
         setFormFields({
-            name: '',
             email: '',
             password: '',
         });
@@ -24,7 +25,7 @@ const LoginForm = () => {
     const handleSubmit = e => {
         e.preventDefault();
 
-        console.log(formFields);
+        dispatch(logIn(formFields));
 
         reset();
     };

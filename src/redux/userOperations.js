@@ -7,37 +7,40 @@ export const setToken = token => {
     axios.defaults.headers.common.Authorization = token ? `Bearer ${token}` : '';
 };
 
-export const logIn = createAsyncThunk('auth/login', async (credentials, { rejectWithValue, dispatch }) => {
+export const logIn = createAsyncThunk('users/login', async (credentials, { rejectWithValue, dispatch }) => {
     try {
-        // const { data } = await axios.post('/auth/login', credentials);
-        // setToken(data.accessToken);
-        return;
+        const { data } = await axios.post('/users/login', credentials);
+        setToken(data.token);
+        console.log(data);
+        return data;
     } catch (error) {
         return rejectWithValue(error);
     }
 });
 
-// export const registration = createAsyncThunk('auth/register', async (credentials, { rejectWithValue, dispatch }) => {
-//     try {
-//         const { data } = await axios.post('/auth/register', credentials);
-//         dispatch(logIn(credentials));
-//         return data;
-//     } catch (error) {
-//         if (error.response.status === 409) {
-//             dispatch(logIn(credentials));
-//         } else return rejectWithValue(error);
-//     }
-// });
+export const registration = createAsyncThunk('users/register', async (credentials, { rejectWithValue, dispatch }) => {
+    try {
+        const { data } = await axios.post('/users/register', credentials);
+        // dispatch(logIn(credentials));
+        // return data;
+        console.log(data);
+    } catch (error) {
+        // if (error.response.status === 409) {
+        //     dispatch(logIn(credentials));
+        // } else
+        return rejectWithValue(error);
+    }
+});
 
-// export const logOut = createAsyncThunk('auth/logout', async (_, { rejectWithValue, dispatch }) => {
-//     try {
-//         await axios.post('/auth/logout');
-//         setToken(null);
-//         dispatch(resetStatistics());
-//     } catch (error) {
-//         return rejectWithValue(error);
-//     }
-// });
+export const logOut = createAsyncThunk('users/logout', async (_, { rejectWithValue, dispatch }) => {
+    try {
+        await axios.get('/users/logout');
+        setToken(null);
+        // dispatch(resetStatistics());
+    } catch (error) {
+        return rejectWithValue(error);
+    }
+});
 
 // export const getUser = createAsyncThunk('getUser', async (_, { rejectWithValue }) => {
 //     try {

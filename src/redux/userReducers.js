@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import message from 'helpers/Message';
 // import { registration, logIn, logOut, refresh, getUser, setUserBalance } from './userOperations';
-import { logIn } from './userOperations';
+import { logIn, logOut, registration } from './userOperations';
 
 const initialState = {
     isLoading: false,
     isLoggedIn: false,
-    refreshToken: null,
+    token: null,
     userData: null,
 };
 const userSlice = createSlice({
@@ -14,22 +14,23 @@ const userSlice = createSlice({
     initialState,
 
     extraReducers: {
-        // [registration.pending]: state => {
-        //     state.isLoading = true;
-        // },
-        // [registration.fulfilled]: state => {
-        //     state.isLoading = false;
-        // },
-        // [registration.rejected]: (state, action) => {
-        //     state.isLoading = false;
-        //     message.error('Registration error', `${action.payload.message}`, 'Ok');
-        // },
+        [registration.pending]: state => {
+            state.isLoading = true;
+        },
+        [registration.fulfilled]: state => {
+            state.isLoading = false;
+        },
+        [registration.rejected]: (state, action) => {
+            state.isLoading = false;
+            message.error('Registration error', `${action.payload.message}`, 'Ok');
+        },
+
         [logIn.pending]: state => {
             state.isLoading = true;
         },
         [logIn.fulfilled]: (state, action) => {
-            // state.refreshToken = action.payload.refreshToken;
-            // state.userData = action.payload.userData;
+            state.token = action.payload.token;
+            state.userData = action.payload.user;
             state.isLoggedIn = true;
             state.isLoading = false;
         },
@@ -37,15 +38,15 @@ const userSlice = createSlice({
             state.isLoading = false;
             message.error('LogIn error', `${action.payload.message}`, 'Ok');
         },
-        // [logOut.fulfilled]: state => {
-        //     state.isLoading = false;
-        //     state.isLoggedIn = false;
-        //     state.refreshToken = null;
-        //     state.userData = null;
-        // },
-        // [logOut.rejected]: (state, action) => {
-        //     message.error('LogIn error', `${action.payload.message}`, 'Ok');
-        // },
+        [logOut.fulfilled]: state => {
+            state.isLoading = false;
+            state.isLoggedIn = false;
+            state.refreshToken = null;
+            state.userData = null;
+        },
+        [logOut.rejected]: (state, action) => {
+            message.error('LogIn error', `${action.payload.message}`, 'Ok');
+        },
         // [refresh.pending]: state => {
         //     state.isLoading = true;
         // },

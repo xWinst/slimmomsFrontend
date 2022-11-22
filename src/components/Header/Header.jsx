@@ -6,10 +6,10 @@ import MomText from '../../images/Mom.svg';
 import { Link } from 'react-router-dom';
 import { NavBar, UserMenu, Icon } from 'components';
 import { useWidth } from 'hooks/useWidth';
-
-const isLoggedIn = false;
+import { useSelector } from 'react-redux';
 
 const Header = () => {
+    const isLoggedIn = useSelector(state => state.user.isLoggedIn);
     const width = useWidth();
     return (
         <header>
