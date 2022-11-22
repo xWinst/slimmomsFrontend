@@ -1,0 +1,37 @@
+.navig {
+    display: flex;
+    margin-left: 55px;
+
+    padding: 4px 0px;
+}
+
+.navlink {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 13px;
+    letter-spacing: 1.08;
+    text-transform: uppercase;
+    color: #212121;
+}
+.navlink + .navlink {
+    margin-left: 16px;
+}
+.navlink:active {
+    color: #9b9faa;
+}
+
+@media screen and (min-width: 768px) {
+    .navig {
+        margin-left: 367px;
+
+        padding: 4px 0px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .navig {
+        margin-left: 5px;
+        padding-left: 20px;
+        border-left: solid 2px #e0e0e0;
+    }
+}

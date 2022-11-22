@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/userOperations';
 import s from '../index.module.css';
+import { Container, Header } from 'components';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -11,12 +12,14 @@ const Home = () => {
     };
 
     return (
-        <section className={s.container}>
-            HOME
-            <button type="button" onClick={signin}>
-                Login
-            </button>
-        </section>
+        <>
+            <section className={s.container}>
+                HOME
+                <button type="button" onClick={signin}>
+                    Login
+                </button>
+            </section>
+        </>
     );
 };
 

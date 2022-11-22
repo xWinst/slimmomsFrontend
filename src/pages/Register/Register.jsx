@@ -1,7 +1,8 @@
 import s from '../index.module.css';
+import { RegisterForm } from 'components';
 
 const Register = () => {
-    return <div className={s.container}>Register</div>;
+    return <RegisterForm />;
 };
 
 export default Register;

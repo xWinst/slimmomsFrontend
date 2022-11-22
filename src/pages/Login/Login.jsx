@@ -1,7 +1,8 @@
 import s from '../index.module.css';
+import { LoginForm } from 'components';
 
 const Login = () => {
-    return <div className={s.container}>Login</div>;
+    return <LoginForm />;
 };
 
 export default Login;
