@@ -4,7 +4,12 @@
     "private": true,
     "homepage": "https://xwinst.github.io/",
     "dependencies": {
+        "@emotion/react": "^11.10.5",
+        "@emotion/styled": "^11.10.5",
         "@moeindana/google-oauth": "^0.1.5",
+        "@mui/icons-material": "^5.10.14",
+        "@mui/material": "^5.10.14",
+        "@react-hook/window-size": "^3.1.1",
         "@reduxjs/toolkit": "^1.8.5",
         "@testing-library/jest-dom": "^5.16.3",
         "@testing-library/react": "^12.1.4",
