@@ -1,7 +1,10 @@
 import s from '../LoginForm/LoginForm.module.css';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { registration } from 'redux/userOperations';
 
 const RegisterForm = () => {
+    const dispatch = useDispatch();
     const [formFields, setFormFields] = useState({
         name: '',
         email: '',
@@ -24,7 +27,7 @@ const RegisterForm = () => {
     const handleSubmit = e => {
         e.preventDefault();
 
-        console.log(formFields);
+        dispatch(registration(formFields));
 
         reset();
     };
@@ -44,12 +47,12 @@ const RegisterForm = () => {
             <label className={s.formLabel}>
                 <input
                     className={s.formInput}
-                    type="email"
-                    name="email"
-                    value={formFields.email}
+                    type="text"
+                    name="name"
+                    value={formFields.name}
                     onChange={handleChange}
-                    title="Please enter valid email address, for example  'example@gmail.com'"
-                    placeholder="Email *"
+                    title="Please enter your name"
+                    placeholder="Name *"
                     min-length="6"
                     required
                 />

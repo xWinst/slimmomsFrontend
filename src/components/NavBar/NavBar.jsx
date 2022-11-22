@@ -1,8 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import s from './NavBar.module.css';
-const isLoggedIn = false;
+import { useSelector } from 'react-redux';
 
 const NavBar = () => {
+    const isLoggedIn = useSelector(state => state.user.isLoggedIn);
     return (
         <nav className={s.navig}>
             {isLoggedIn ? (
