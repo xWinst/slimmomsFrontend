@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://kapusta-backend.goit.global'; ////////////////
+axios.defaults.baseURL = process.env.REACT_APP_BASE_URL; ////////////////
 
 export const setToken = token => {
     axios.defaults.headers.common.Authorization = token ? `Bearer ${token}` : '';

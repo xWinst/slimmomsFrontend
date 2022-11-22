@@ -1,8 +1,58 @@
-.container {
+.headWrapper {
     /* position: fixed; */
     /* top: 0;
     width: 100%;
     height: 56px;
     background-color: var(--bg-color);
     z-index: 100; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 2px #e0e0e0;
+    padding: 20px 23px 16px 20px;
+}
+.logoLink {
+    display: flex;
+    gap: 7px;
+}
+
+.menuBtn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    fill: #212121;
+}
+.menuBtn:hover,
+:focus {
+    fill: #fc842d;
+}
+
+.logoAndNavBarWrapp {
+    display: flex;
+    align-items: center;
+}
+.userMenuAndBurgerWrapp {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .headWrapper {
+        padding: 20px 35px 16px 32px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .headWrapper {
+        padding: 80px 16px 0px 16px;
+        border-bottom: none;
+        align-items: flex-end;
+    }
+    .logoAndNavBarWrapp {
+        align-items: flex-end;
+
+        gap: 20px;
+        padding-bottom: 8px;
+    }
 }

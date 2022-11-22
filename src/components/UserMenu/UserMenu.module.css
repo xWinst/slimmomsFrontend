@@ -1,0 +1,36 @@
+.userMenuWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 4px 0;
+    background-color: #eff1f3;
+}
+
+.loginName {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 13px;
+    text-align: right;
+    letter-spacing: 0.04em;
+    color: #212121;
+    margin-right: 20px;
+}
+
+.exitBtn {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 13px;
+    letter-spacing: 0.04em;
+
+    color: #9b9faa;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    padding: 10px 20px;
+    border-left: 2px solid #e0e0e0;
+}
+@media screen and (min-width: 768px) {
+    .userMenuWrapper {
+        background-color: transparent;
+    }
+}

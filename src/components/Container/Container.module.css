@@ -1,0 +1,49 @@
+.container {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+.containerLoggedIn {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 768px;
+        background-image: url('../../images/background/banana-tablet.png'),
+            url('../../images/background/strawberry-tablet.png'), url('../../images/background/leaves-tablet.png'),
+            url('../../images/background/grey-background-tablet.svg');
+        background-repeat: no-repeat;
+        background-position: left 277px top 593px, left 464px top 583px, left bottom, left 247px top 461px;
+        min-height: 1024px;
+    }
+    .containerLoggedIn {
+        max-width: 768px;
+        min-height: 1024px;
+        background-image: url('../../images/background/leaves-loggedIn-tablet.png'),
+            linear-gradient(to bottom, white 0%, white 68%, #f0f1f3 68%, #f0f1f3 100%);
+
+        background-repeat: no-repeat;
+        background-position: top 690px left 399px, top;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+        min-height: 850px;
+        background-image: url('../../images/background/leaves.png'), url('../../images/background/strawberry.png'),
+            url('../../images/background/banana.png'), url('../../images/background/grey-background.svg');
+        background-size: 746px 846px, 286px 289px, 498px 450px, 602px 816px;
+        background-position: left 339px top -26px, left 958px top 506px, right top, right bottom;
+    }
+    .containerLoggedIn {
+        max-width: 1280px;
+        min-height: 850px;
+        background-image: url('../../images/background/leaves-loggedIn-desktop.png'),
+            linear-gradient(to right, white 0%, white 68%, #f0f1f3 68%, #f0f1f3 100%);
+        /* background-size: 746px 846px; */
+        background-position: left 775px top 35px, left;
+    }
+}

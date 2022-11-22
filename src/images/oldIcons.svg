@@ -32,5 +32,7 @@
     <symbol id="close" fill="blue" viewBox="0 0 14 14">
         <path d="M1 1 12 12M1 13 13 1" stroke-width="2"/>
     </symbol>
+    
+
 
 </svg>

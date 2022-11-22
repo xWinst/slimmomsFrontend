@@ -2,7 +2,7 @@ import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { Header, Loader, PrivateRoute, RestrictedRoute } from 'components';
+import { Header, Loader, PrivateRoute, RestrictedRoute, Container } from 'components';
 
 const Home = lazy(() => import('pages/Home/Home'));
 const Login = lazy(() => import('pages/Login/Login'));
@@ -17,7 +17,7 @@ export const App = () => {
     return isLoading ? (
         <Loader />
     ) : (
-        <div>
+        <Container>
             <Header />
             <main className="main">
                 <Suspense fallback={<Loader />}>
@@ -35,6 +35,6 @@ export const App = () => {
                     </Routes>
                 </Suspense>
             </main>
-        </div>
+        </Container>
     );
 };
