@@ -10,3 +10,7 @@ export { default as NavBar } from './NavBar/NavBar.jsx';
 export { default as UserMenu } from './UserMenu/UserMenu.jsx';
 export { default as LoginForm } from './LoginForm/LoginForm.jsx';
 export { default as RegisterForm } from './RegisterForm/RegisterForm.jsx';
+export { default as TeamBTN } from './TeamBTN/TeamBTN.jsx';
+export { default as ModalTeam } from './ModalTeam/ModalTeam.jsx';
+
+
