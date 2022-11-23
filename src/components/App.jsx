@@ -8,6 +8,7 @@ const Home = lazy(() => import('pages/Home/Home'));
 const Login = lazy(() => import('pages/Login/Login'));
 const Register = lazy(() => import('pages/Register/Register'));
 const Diary = lazy(() => import('pages/Diary/Diary'));
+const AddInDiary = lazy(() => import('pages/Diary/Input/AddInDiary'));
 const Calculator = lazy(() => import('pages/Calculator/Calculator'));
 const PageNotFound = lazy(() => import('pages/PageNotFound/PageNotFound'));
 
@@ -30,6 +31,7 @@ export const App = () => {
                         <Route element={<PrivateRoute />}>
                             <Route path="calculator" element={<Calculator />} />
                             <Route path="diary" element={<Diary />} />
+                            <Route path="addindiary" element={<AddInDiary />} />
                         </Route>
                         <Route path="*" element={<PageNotFound />} />
                     </Routes>
