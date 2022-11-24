@@ -6,7 +6,7 @@ import { logIn, logOut, registration } from './userOperations';
 const initialState = {
     isLoading: false,
     isLoggedIn: false,
-    token: null,
+    accessToken: null,
     userData: null,
 };
 const userSlice = createSlice({
@@ -19,6 +19,7 @@ const userSlice = createSlice({
         },
         [registration.fulfilled]: state => {
             state.isLoading = false;
+            message.sucsess('Registration was completed successfully');
         },
         [registration.rejected]: (state, action) => {
             state.isLoading = false;
@@ -29,7 +30,7 @@ const userSlice = createSlice({
             state.isLoading = true;
         },
         [logIn.fulfilled]: (state, action) => {
-            state.token = action.payload.token;
+            state.accessToken = action.payload.accessToken;
             state.userData = action.payload.user;
             state.isLoggedIn = true;
             state.isLoading = false;
@@ -41,7 +42,7 @@ const userSlice = createSlice({
         [logOut.fulfilled]: state => {
             state.isLoading = false;
             state.isLoggedIn = false;
-            state.refreshToken = null;
+            state.accessToken = null;
             state.userData = null;
         },
         [logOut.rejected]: (state, action) => {
