@@ -12,7 +12,6 @@ const Calendar = ({ getDate, initial }) => {
 
     return (
         <div className={s.container}>
-            <Icon className={s.icon} icon={`calendar`} width="20" height="20" />
             <DatePicker
                 maxDate={new Date()}
                 selected={date}
@@ -20,6 +19,7 @@ const Calendar = ({ getDate, initial }) => {
                 className={s.datePicker}
                 dateFormat="dd.MM.yyyy"
             />
+            <Icon className={s.icon} icon={`calendar`} width="22" height="22" />
         </div>
     );
 };

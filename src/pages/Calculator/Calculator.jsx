@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import s from '../index.module.css';
-import SummaryForDate from '../Diary/SummaryForDate/SummaryForDate';
+import { SummaryForDate } from 'components';
 
 const Calculator = () => {
     return (

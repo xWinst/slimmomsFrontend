@@ -5,12 +5,13 @@ export { default as PrivateRoute } from './ProtectedRoutes/PrivateRoute';
 export { default as RestrictedRoute } from './ProtectedRoutes/RestrictedRoutes';
 export { default as Calendar } from './Calendar/Calendar';
 export { default as Modal } from './Modal/Modal';
-export { default as Container } from './Container/Container.jsx';
-export { default as NavBar } from './NavBar/NavBar.jsx';
-export { default as UserMenu } from './UserMenu/UserMenu.jsx';
-export { default as LoginForm } from './LoginForm/LoginForm.jsx';
-export { default as RegisterForm } from './RegisterForm/RegisterForm.jsx';
-export { default as TeamBTN } from './TeamBTN/TeamBTN.jsx';
-export { default as ModalTeam } from './ModalTeam/ModalTeam.jsx';
-
-
+export { default as Container } from './Container/Container';
+export { default as NavBar } from './NavBar/NavBar';
+export { default as UserMenu } from './UserMenu/UserMenu';
+export { default as LoginForm } from './LoginForm/LoginForm';
+export { default as RegisterForm } from './RegisterForm/RegisterForm';
+export { default as TeamBTN } from './TeamBTN/TeamBTN';
+export { default as ModalTeam } from './ModalTeam/ModalTeam';
+export { default as ProductList } from './ProductList/ProductList';
+export { default as SummaryForDate } from './SummaryForDate/SummaryForDate';
+export { default as ProductForm } from './ProductForm/ProductForm';
