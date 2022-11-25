@@ -3,25 +3,28 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const { REACT_APP_BASE_URL } = process.env;
 
-const instance = axios.create({ baseURL: REACT_APP_BASE_URL }); ////////////////
+// const instance = axios.create({ baseURL: REACT_APP_BASE_URL }); ////////////////
+
+axios.defaults.baseURL = REACT_APP_BASE_URL;
 
 export const setToken = token => {
-    instance.defaults.headers.common.Authorization = token ? `Bearer ${token}` : '';
+    axios.defaults.headers.common.Authorization = token ? `Bearer ${token}` : '';
 };
 
-instance.interceptors.response.use(
+axios.interceptors.response.use(
     response => response,
     async error => {
-        console.log(error.config.headers.Authorization);
         if (error.response.status === 401) {
             const refreshToken = localStorage.getItem('refreshToken');
             try {
-                const { data } = await instance.post('/users/refresh', { refreshToken });
+                const { data } = await axios.post('/users/refresh', { refreshToken });
                 setToken(data.accessToken);
                 localStorage.setItem('refreshToken', data.refreshToken);
                 error.config.headers.Authorization = `Bearer ${data.accessToken}`;
+                console.log('123');
                 return axios(error.config);
             } catch (error) {
+                console.log('HI');
                 return Promise.reject(error);
             }
         }
@@ -31,7 +34,7 @@ instance.interceptors.response.use(
 
 export const logIn = createAsyncThunk('users/login', async (credentials, { rejectWithValue, dispatch }) => {
     try {
-        const { data } = await instance.post('/users/login', credentials);
+        const { data } = await axios.post('/users/login', credentials);
         setToken(data.accessToken);
         localStorage.setItem('refreshToken', data.refreshToken);
         return data;
@@ -42,7 +45,7 @@ export const logIn = createAsyncThunk('users/login', async (credentials, { rejec
 
 export const registration = createAsyncThunk('users/register', async (credentials, { rejectWithValue, dispatch }) => {
     try {
-        const { data } = await instance.post('/users/register', credentials);
+        const { data } = await axios.post('/users/register', credentials);
         // dispatch(logIn(credentials));
         // return data;
         console.log(data);
@@ -56,7 +59,7 @@ export const registration = createAsyncThunk('users/register', async (credential
 
 export const logOut = createAsyncThunk('users/logout', async (_, { rejectWithValue, dispatch }) => {
     try {
-        await instance.get('/users/logout');
+        await axios.get('/users/logout');
         setToken(null);
         // dispatch(resetStatistics());
     } catch (error) {
