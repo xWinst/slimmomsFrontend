@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+}
+
+.diary {
+    width: 763px;
+}
+
+/* .date {
+    font-size: 34px;
+    line-height: 1.2;
+
+    color: #212121;
+} */
