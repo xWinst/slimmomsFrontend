@@ -17,9 +17,9 @@ axios.interceptors.response.use(
         if (error.response.status === 401) {
             const refreshToken = localStorage.getItem('refreshToken');
             try {
-                const { data } = await axios.post('/users/refresh', { refreshToken });
+                const data = refresh();
                 console.log('????');
-                refresh();
+                // refresh();
                 // setToken(data.accessToken);
                 // localStorage.setItem('refreshToken', data.refreshToken);
                 error.config.headers.Authorization = `Bearer ${data.accessToken}`;
