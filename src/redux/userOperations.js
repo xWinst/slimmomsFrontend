@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const { REACT_APP_BASE_URL } = process.env;
 
-// const instance = axios.create({ baseURL: REACT_APP_BASE_URL }); ////////////////
+// // const instance = axios.create({ baseURL: REACT_APP_BASE_URL }); ////////////////
 axios.defaults.baseURL = REACT_APP_BASE_URL;
 
 export const setToken = token => {
@@ -13,18 +13,20 @@ export const setToken = token => {
 axios.interceptors.response.use(
     response => response,
     async error => {
-        // console.log(error.config.headers.Authorization);
         if (error.response.status === 401) {
-            const refreshToken = localStorage.getItem('refreshToken');
+            // const refreshToken = localStorage.getItem('refreshToken');
             try {
                 const data = refresh();
                 console.log('????');
                 // refresh();
                 // setToken(data.accessToken);
                 // localStorage.setItem('refreshToken', data.refreshToken);
+
                 error.config.headers.Authorization = `Bearer ${data.accessToken}`;
+
                 return axios(error.config);
             } catch (error) {
+                console.log('HI');
                 return Promise.reject(error);
             }
         }

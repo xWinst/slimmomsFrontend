@@ -1,9 +1,15 @@
 import s from './LoginForm.module.css';
+import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/userOperations';
 
 const LoginForm = () => {
+    const {
+        register,
+        formState: { errors, isValid },
+        // handleSubmit,
+    } = useForm({ mode: 'onBlur' });
     const dispatch = useDispatch();
     const [formFields, setFormFields] = useState({
         email: '',
@@ -22,15 +28,15 @@ const LoginForm = () => {
         });
     };
 
-    const handleSubmit = e => {
+    const onHandleSubmit = e => {
         e.preventDefault();
-
+        console.log(formFields);
         dispatch(logIn(formFields));
 
         reset();
     };
     return (
-        <form className={s.loginForm} onSubmit={handleSubmit}>
+        <form className={s.loginForm} onSubmit={onHandleSubmit}>
             {/* <p className={s.googleText}>You can log in with your Google Account:</p>
             <button
                 onClick={() => {
@@ -44,6 +50,10 @@ const LoginForm = () => {
             <h2 className={s.formHeading}>Log in</h2>
             <label className={s.formLabel}>
                 <input
+                    {...register('email', {
+                        required: 'Need to feel up this field',
+                        minLength: { value: 6, message: 'Minimum email length - 6 symbols' },
+                    })}
                     className={s.formInput}
                     type="email"
                     name="email"
@@ -54,9 +64,16 @@ const LoginForm = () => {
                     min-length="6"
                     required
                 />
+                <div className={s.errorCont}>
+                    {errors.email && <p className={s.errorText}>{errors.email.message || 'Invalid email'}</p>}
+                </div>
             </label>
             <label className={s.formLabel}>
                 <input
+                    {...register('password', {
+                        required: 'Need to feel up this field',
+                        minLength: { value: 6, message: 'Minimum password length - 6 symbols' },
+                    })}
                     className={s.formInput}
                     type="password"
                     name="password"
@@ -64,12 +81,15 @@ const LoginForm = () => {
                     onChange={handleChange}
                     title="Please enter your password. Minimum length 8 symbols"
                     placeholder="Password *"
-                    min-length="8"
+                    min-length="6"
                     required
                 />
+                <div className={s.errorCont}>
+                    {errors.password && <p className={s.errorText}>{errors.password.message || 'Invalid password'}</p>}
+                </div>
             </label>
 
-            <button type="submit" className={s.formBtn}>
+            <button type="submit" disabled={!isValid} className={s.formBtn}>
                 Login
             </button>
         </form>
