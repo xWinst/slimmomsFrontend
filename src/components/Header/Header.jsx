@@ -4,11 +4,10 @@ import SlimMomsLogoDesktop from '../../images/slim-mom-logo-desktop.svg';
 import SlimText from '../../images/Slim.svg';
 import MomText from '../../images/Mom.svg';
 import { Link } from 'react-router-dom';
-import { NavBar, UserMenu, Icon } from 'components';
+import { NavBar, UserMenu } from 'components';
 import { useWidth } from 'hooks/useWidth';
 import { useSelector } from 'react-redux';
-
-const Header = () => {
+const Header = ({ isHidden }) => {
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);
     const width = useWidth();
     return (
@@ -19,7 +18,7 @@ const Header = () => {
                         <img
                             className={s.logo}
                             src={width < 1280 ? SlimMomsLogoMobile : SlimMomsLogoDesktop}
-                            alt="Kapusta-logo"
+                            alt="SlimMoms-logo"
                             height={width < 1280 ? '44' : '66'}
                             width={width < 1280 ? '47' : '167'}
                         />
@@ -30,15 +29,14 @@ const Header = () => {
                             </>
                         )}
                     </Link>
-
-                    {(!isLoggedIn || width > 1279) && <NavBar></NavBar>}
                 </div>
+                {(!isLoggedIn || width > 1279) && <NavBar isLoggedIn={isLoggedIn} isHidden={isHidden}></NavBar>}
 
                 <div className={s.userMenuAndBurgerWrapp}>
                     {isLoggedIn && width > 767 && <UserMenu></UserMenu>}
-                    {isLoggedIn && width < 1280 && (
-                        <Icon icon="menuBtn" className={s.menuBtn} onClick={() => {}} height="12" width="18" />
-                    )}
+                    {
+                        isLoggedIn && width < 1280 && <NavBar isLoggedIn={isLoggedIn} isHidden={isHidden} />
+                    }
                 </div>
             </div>
             {isLoggedIn && width < 768 && <UserMenu></UserMenu>}
