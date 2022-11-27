@@ -2,28 +2,33 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { setDailyRate } from 'redux/userOperations';
-import { Modal } from 'components';
+import { HarmfulProductsList, Modal } from 'components';
 import s from './CalculatorForm.module.css';
 
 const CalculatorForm = ({ submit = true }) => {
     const [isShowModal, setIsShowModal] = useState(false);
+    const [rate, setRate] = useState();
+    const [blood, setBlood] = useState();
     const {
         register,
         formState: { errors, isValid },
+        watch,
         handleSubmit,
         reset,
     } = useForm({ mode: 'onBlur' });
     const dispatch = useDispatch();
 
     const onSubmit = data => {
-        const { height, desiredWeight, age, weight, group } = data;
+        const { height, desiredWeight, age, weight, bloodGroup } = data;
         const dailyRate =
             10 * weight +
             6.25 * height -
             5 * age -
             161 -
             10 * (weight - desiredWeight);
-        if (submit) dispatch(setDailyRate({ dailyRate }));
+        setRate(dailyRate);
+        setBlood(bloodGroup);
+        if (submit) dispatch(setDailyRate({ dailyRate, bloodGroup }));
         else setIsShowModal(true);
         reset();
     };
@@ -36,6 +41,9 @@ const CalculatorForm = ({ submit = true }) => {
         setIsShowModal(false); //Перейти на регистрацию
     };
 
+    const getClass = n => (watch('bloodGroup') === n ? s.checked : s.label);
+
+    console.log('bb', watch('bloodGroup'));
     return (
         <div className={s.container}>
             <h2 className={s.title}>
@@ -97,7 +105,7 @@ const CalculatorForm = ({ submit = true }) => {
                 </label>
                 <label>
                     <input
-                        className={s.input}
+                        className={s.input2}
                         type="number"
                         {...register('age', {
                             required: 'This is a required field',
@@ -146,42 +154,42 @@ const CalculatorForm = ({ submit = true }) => {
                         )}
                     </p>
                 </label>
-                <fieldset className={s.group} {...register('group')}>
+                <fieldset className={s.group} {...register('bloodGroup')}>
                     <div className={s.btns}>
-                        <label>
+                        <label className={getClass('1')}>
                             <input
+                                className={s.radio}
                                 type="radio"
-                                id="1"
-                                name="BloodType"
-                                value="1"
-                                checked
+                                {...register('bloodGroup')}
+                                value={1}
+                                defaultChecked
                             />
                             &nbsp;1
                         </label>
-                        <label>
+                        <label className={getClass('2')}>
                             <input
+                                className={s.radio}
                                 type="radio"
-                                id="2"
-                                name="BloodType"
-                                value="2"
+                                value={2}
+                                {...register('bloodGroup')}
                             />
                             &nbsp;2
                         </label>
-                        <label>
+                        <label className={getClass('3')}>
                             <input
+                                className={s.radio}
                                 type="radio"
-                                id="3"
-                                name="BloodType"
-                                value="3"
+                                value={3}
+                                {...register('bloodGroup')}
                             />
                             &nbsp;3
                         </label>
-                        <label>
+                        <label className={getClass('4')}>
                             <input
+                                className={s.radio}
                                 type="radio"
-                                id="4"
-                                name="BloodType"
-                                value="4"
+                                value={4}
+                                {...register('bloodGroup')}
                             />
                             &nbsp;4
                         </label>
@@ -198,7 +206,26 @@ const CalculatorForm = ({ submit = true }) => {
             </form>
             {isShowModal && (
                 <Modal onClose={close} onConfirm={confirm}>
-                    {}
+                    <div className={s.modalContainer}>
+                        <p className={s.modalTitle}>
+                            {' '}
+                            Your recommended daily calorie intake is
+                        </p>
+                        <p className={s.rate}>
+                            <span className={s.value}>{rate}</span>{' '}
+                            &nbsp;&nbsp;kcal
+                        </p>
+                        <div className={s.line}></div>
+                        <p className={s.text}>Foods you should not eat</p>
+                        <HarmfulProductsList blood={blood} />
+                        <button
+                            className={s.btnCenter}
+                            type="submit"
+                            onClick={close}
+                        >
+                            Start losing weight
+                        </button>
+                    </div>
                 </Modal>
             )}
         </div>

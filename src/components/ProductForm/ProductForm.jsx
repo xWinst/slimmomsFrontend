@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Calendar, Icon, Select } from 'components';
 import { add } from 'redux/productOperation';
+import message from 'helpers/Message';
 import s from './ProductForm.module.css';
 
 const ProductForm = () => {
@@ -12,29 +13,36 @@ const ProductForm = () => {
     const dispatch = useDispatch();
 
     const onChange = e => {
-        if (e.target.name === 'name') {
+        if (e.target.name === 'name' && e.target.value !== '') {
             const array = allProducts.filter(product =>
                 product.title.ua
                     .toLowerCase()
                     .includes(e.target.value.toLowerCase())
             );
             setVisibleProduct(array);
-        }
+        } else setVisibleProduct(null);
         setProduct(state => ({ ...state, [e.target.name]: e.target.value }));
     };
 
     const addProduct = () => {
         const { name, calories, weight, defaultWeight } = product;
-        dispatch(
-            add({
-                name,
-                weight,
-                date,
-                calories: Math.round(
-                    (calories * Number.parseFloat(weight)) / defaultWeight
-                ),
-            })
-        );
+        if (calories) {
+            dispatch(
+                add({
+                    name,
+                    weight,
+                    date,
+                    calories: Math.round(
+                        (calories * Number.parseFloat(weight)) / defaultWeight
+                    ),
+                })
+            );
+        } else
+            message.warning(
+                'You must select a product from the list',
+                `Please try again`,
+                'Ok'
+            );
         setProduct({ name: '', weight: '' });
     };
 

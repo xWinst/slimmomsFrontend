@@ -1,15 +1,10 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-    getAllProducts,
-    getUserProducts,
-    deleteUserProducts,
-} from 'redux/productOperation';
+import { getUserProducts, deleteUserProducts } from 'redux/productOperation';
 import { ProductList, Summary, ProductForm } from 'components';
 import s from '../index.module.css';
 
 const Diary = () => {
-    const allProducts = useSelector(state => state.product.allProducts);
     const products = useSelector(state => state.product.products);
     const date = useSelector(state => state.product.date);
 
@@ -18,8 +13,6 @@ const Diary = () => {
     useEffect(() => {
         dispatch(getUserProducts(date));
     }, [dispatch, date]);
-
-    if (!allProducts) dispatch(getAllProducts());
 
     const remove = id => {
         dispatch(deleteUserProducts(id));

@@ -1,6 +1,6 @@
 import s from '../LoginForm/LoginForm.module.css';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registration } from 'redux/userOperations';
 
@@ -9,32 +9,31 @@ const RegisterForm = () => {
         register,
         formState: { errors, isValid },
         handleSubmit,
+        reset,
     } = useForm({ mode: 'onBlur' });
 
     const dispatch = useDispatch();
-    const [formFields, setFormFields] = useState({
-        name: '',
-        email: '',
-        password: '',
-    });
+    // const [formFields, setFormFields] = useState({
+    //     name: '',
+    //     email: '',
+    //     password: '',
+    // });
 
-    const handleChange = event => {
-        const { name, value } = event.currentTarget;
-        setFormFields(prevState => ({ ...prevState, [name]: value }));
-    };
+    // const handleChange = event => {
+    //     const { name, value } = event.currentTarget;
+    //     setFormFields(prevState => ({ ...prevState, [name]: value }));
+    // };
 
-    const reset = () => {
-        setFormFields({
-            name: '',
-            email: '',
-            password: '',
-        });
-    };
+    // const reset = () => {
+    //     setFormFields({
+    //         name: '',
+    //         email: '',
+    //         password: '',
+    //     });
+    // };
 
-    const onHandleSubmit = e => {
-        e.preventDefault();
-
-        dispatch(registration(formFields));
+    const onHandleSubmit = data => {
+        dispatch(registration(data));
 
         reset();
     };
@@ -55,21 +54,28 @@ const RegisterForm = () => {
                 <input
                     {...register('name', {
                         required: 'Need to feel up this field',
-                        minLength: { value: 6, message: 'Minimum name length - 6 symbols' },
+                        minLength: {
+                            value: 2,
+                            message: 'Minimum name length - 6 symbols',
+                        },
                         maxLength: 15,
                     })}
                     className={s.formInput}
-                    type="text"
-                    name="name"
-                    value={formFields.name}
-                    onChange={handleChange}
+                    // type="text"
+                    // name="name"
+                    // value={formFields.name}
+                    // onChange={handleChange}
                     title="Please enter your name"
                     placeholder="Name *"
-                    min-length="4"
-                    required
+                    // min-length="4"
+                    // required
                 />
                 <div className={s.errorCont}>
-                    {errors.name && <p className={s.errorText}>{errors.name.message || 'Invalid name'}</p>}
+                    {errors.name && (
+                        <p className={s.errorText}>
+                            {errors.name.message || 'Invalid name'}
+                        </p>
+                    )}
                 </div>
             </label>
 
@@ -77,20 +83,27 @@ const RegisterForm = () => {
                 <input
                     {...register('email', {
                         required: 'Need to feel up this field',
-                        minLength: { value: 6, message: 'Minimum email length - 6 symbols' },
+                        minLength: {
+                            value: 6,
+                            message: 'Minimum email length - 6 symbols',
+                        },
                     })}
                     className={s.formInput}
                     type="email"
-                    name="email"
-                    value={formFields.email}
-                    onChange={handleChange}
+                    // name="email"
+                    // value={formFields.email}
+                    // onChange={handleChange}
                     title="Please enter valid email address, for example  'example@gmail.com'"
                     placeholder="Email *"
-                    min-length="6"
-                    required
+                    // min-length="6"
+                    // required
                 />
                 <div className={s.errorCont}>
-                    {errors.email && <p className={s.errorText}>{errors.email.message || 'Invalid email'}</p>}
+                    {errors.email && (
+                        <p className={s.errorText}>
+                            {errors.email.message || 'Invalid email'}
+                        </p>
+                    )}
                 </div>
             </label>
 
@@ -98,20 +111,27 @@ const RegisterForm = () => {
                 <input
                     {...register('password', {
                         required: 'Need to feel up this field',
-                        minLength: { value: 6, message: 'Minimum password length - 6 symbols' },
+                        minLength: {
+                            value: 6,
+                            message: 'Minimum password length - 6 symbols',
+                        },
                     })}
                     className={s.formInput}
                     type="password"
-                    name="password"
-                    value={formFields.password}
-                    onChange={handleChange}
+                    // name="password"
+                    // value={formFields.password}
+                    // onChange={handleChange}
                     title="Please enter your password. Minimum length 8 symbols"
                     placeholder="Password *"
-                    min-length="6"
-                    required
+                    // min-length="6"
+                    // required
                 />
                 <div className={s.errorCont}>
-                    {errors.password && <p className={s.errorText}>{errors.password.message || 'Invalid password'}</p>}
+                    {errors.password && (
+                        <p className={s.errorText}>
+                            {errors.password.message || 'Invalid password'}
+                        </p>
+                    )}
                 </div>
             </label>
 

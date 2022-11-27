@@ -2,6 +2,7 @@ import { Suspense, lazy, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { refresh } from 'redux/userOperations';
+import { getAllProducts } from 'redux/productOperation';
 
 import {
     Header,
@@ -24,6 +25,8 @@ export const App = () => {
     const dispatch = useDispatch();
 
     if (!hasRefresh) {
+        console.log('Refresh?');
+        dispatch(getAllProducts());
         dispatch(refresh());
         setHasRefresh(true);
     }

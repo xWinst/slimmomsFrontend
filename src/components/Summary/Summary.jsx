@@ -1,4 +1,6 @@
+import { HarmfulProductsList } from 'components';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import s from './Summary.module.css';
 
 const Summary = () => {
@@ -8,22 +10,43 @@ const Summary = () => {
 
     return (
         <div className={s.container}>
-            <h2 className={s.title}>
-                Summary for <span>{date.replaceAll('-', '/')}</span>
-            </h2>
-            <ul className={s.summary}>
-                <li>Left : {dailyRate - consumed} kcal</li>
-                <li>Consumed : {consumed} kcal</li>
-                <li>Daily rate : {dailyRate} kcal</li>
-                <li>
-                    % of normal : {((consumed / dailyRate) * 100).toFixed(2)} %
-                </li>
-            </ul>
-            <h2 className={s.title}>Food not recommended</h2>
-            <span className={s.text}>
-                All broths / decoctions, oily fish, caviar and meat, mushrooms,
-                cereals (millet, barley, wheat)
-            </span>
+            {dailyRate ? (
+                <>
+                    <h2 className={s.title}>
+                        Summary for <span>{date.replaceAll('-', '/')}</span>
+                    </h2>
+                    <ul className={s.summary}>
+                        <li className={s.item}>
+                            <p>Left</p>
+                            <p>{dailyRate - consumed} kcal</p>
+                        </li>
+                        <li className={s.item}>
+                            <p>Consumed</p>
+                            <p>{consumed} kcal</p>
+                        </li>
+                        <li className={s.item}>
+                            <p>Daily rate</p>
+                            <p>{dailyRate} kcal</p>
+                        </li>
+                        <li className={s.item}>
+                            <p>% of normal</p>
+                            <p>{((consumed / dailyRate) * 100).toFixed(2)} %</p>
+                        </li>
+                    </ul>
+                    <h2 className={s.title}>Food not recommended</h2>
+                    <HarmfulProductsList />
+                </>
+            ) : (
+                <>
+                    <p className={s.note}>
+                        To see the summary you need to calculate the daily
+                        calorie intake
+                    </p>
+                    <Link className={s.link} to="/calculator">
+                        Go to calculate
+                    </Link>
+                </>
+            )}
         </div>
     );
 };

@@ -1,26 +1,36 @@
 import { createPortal } from 'react-dom';
-
 import { useEffect } from 'react';
-
-import s from './Modal.module.css';
-import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useWidth } from '../../hooks/useWidth';
+import { Icon } from 'components';
+import s from './Modal.module.css';
+
 const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ onClose, children }) => {
-    useEffect(() => {
-        const handleKeyDown = e => {
-            if (e.code === 'Escape') {
-                onClose(e);
-            }
-            document.body.style.overflow = 'hidden';
-            return () => (document.body.style.overflow = 'unset');
-        };
+    // useEffect(() => {
+    //     const handleKeyDown = e => {
+    //         if (e.code === 'Escape') {
+    //             onClose(e);
+    //         }
+    //         document.body.style.overflow = 'hidden';
+    //         return () => (document.body.style.overflow = 'unset');
+    //     };
 
-        window.addEventListener('keydown', handleKeyDown);
-        return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [onClose]);
+    //     window.addEventListener('keydown', handleKeyDown);
+    //     return () => window.removeEventListener('keydown', handleKeyDown);
+    // }, [onClose]);
+
+    useEffect(() => {
+        window.addEventListener('keydown', closeModal);
+        return () => window.removeEventListener('keydown', closeModal);
+    });
+
+    const closeModal = event => {
+        if (event.code === 'Escape') {
+            onClose();
+        }
+    };
 
     const handleBackdropclick = e => {
         if (e.target === e.currentTarget) {
@@ -28,28 +38,22 @@ const Modal = ({ onClose, children }) => {
         }
     };
 
-    const onlyWidth = useWidth();
+    const width = useWidth();
 
     return createPortal(
         <div className={s.overlay} onClick={handleBackdropclick}>
             <div className={s.modal}>
-                {onlyWidth <= 768 ? (
+                {width <= 768 ? (
                     <div className={s.iconArrowBack}>
-                        {' '}
                         <ArrowBackIcon onClick={onClose} />
                     </div>
                 ) : (
-                    <CloseIcon
-                        className={s.iconClose}
+                    <Icon
+                        className={s.icon}
+                        icon="close"
+                        width="12"
+                        height="12"
                         onClick={onClose}
-                        sx={{
-                            cursor: 'pointer',
-                            margin: '-10px 0 10px 0',
-                            marginLeft: 'auto',
-                            textDecoration: 'none',
-                            color: '#000000',
-                            display: 'block',
-                        }}
                     />
                 )}
                 <div className={s.wrapper}>{children}</div>

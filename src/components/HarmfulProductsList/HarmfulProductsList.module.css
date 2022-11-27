@@ -1,0 +1,11 @@
+.list {
+    list-style: decimal;
+    text-align: left;
+    margin-top: 20px;
+    color: #9b9faa;
+    margin-left: 18px;
+}
+
+.item {
+    margin-bottom: 15px;
+}

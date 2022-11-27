@@ -11,7 +11,7 @@ const initialState = {
     allProducts: null,
     products: null,
     date: null,
-    consumed: null,
+    consumed: 0,
 };
 
 const productSlice = createSlice({
@@ -37,6 +37,7 @@ const productSlice = createSlice({
 
         [add.fulfilled]: (state, action) => {
             state.products.push(action.payload);
+            state.consumed += action.payload.calories;
         },
 
         [add.rejected]: (state, action) => {

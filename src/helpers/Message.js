@@ -11,6 +11,7 @@ const styles = {
 
 Report.init({
     plainText: false,
+    titleMaxLength: 100,
 });
 
 class Message {
