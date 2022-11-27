@@ -1,4 +1,3 @@
-// import { NavLink } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -7,7 +6,6 @@ import {
     deleteUserProducts,
 } from 'redux/productOperation';
 import { ProductList, Summary, ProductForm } from 'components';
-// import s from './Diary.module.css';
 import s from '../index.module.css';
 
 const Diary = () => {

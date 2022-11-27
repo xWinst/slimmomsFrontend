@@ -37,7 +37,6 @@ const productSlice = createSlice({
 
         [add.fulfilled]: (state, action) => {
             state.products.push(action.payload);
-            // console.log('action.payload: ', action.payload);
         },
 
         [add.rejected]: (state, action) => {

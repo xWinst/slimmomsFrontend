@@ -30,7 +30,6 @@ const LoginForm = () => {
 
     const onHandleSubmit = e => {
         e.preventDefault();
-        console.log(formFields);
         dispatch(logIn(formFields));
 
         reset();
@@ -52,7 +51,10 @@ const LoginForm = () => {
                 <input
                     {...register('email', {
                         required: 'Need to feel up this field',
-                        minLength: { value: 6, message: 'Minimum email length - 6 symbols' },
+                        minLength: {
+                            value: 6,
+                            message: 'Minimum email length - 6 symbols',
+                        },
                     })}
                     className={s.formInput}
                     type="email"
@@ -65,14 +67,21 @@ const LoginForm = () => {
                     required
                 />
                 <div className={s.errorCont}>
-                    {errors.email && <p className={s.errorText}>{errors.email.message || 'Invalid email'}</p>}
+                    {errors.email && (
+                        <p className={s.errorText}>
+                            {errors.email.message || 'Invalid email'}
+                        </p>
+                    )}
                 </div>
             </label>
             <label className={s.formLabel}>
                 <input
                     {...register('password', {
                         required: 'Need to feel up this field',
-                        minLength: { value: 6, message: 'Minimum password length - 6 symbols' },
+                        minLength: {
+                            value: 6,
+                            message: 'Minimum password length - 6 symbols',
+                        },
                     })}
                     className={s.formInput}
                     type="password"
@@ -85,7 +94,11 @@ const LoginForm = () => {
                     required
                 />
                 <div className={s.errorCont}>
-                    {errors.password && <p className={s.errorText}>{errors.password.message || 'Invalid password'}</p>}
+                    {errors.password && (
+                        <p className={s.errorText}>
+                            {errors.password.message || 'Invalid password'}
+                        </p>
+                    )}
                 </div>
             </label>
 

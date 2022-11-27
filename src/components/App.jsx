@@ -3,13 +3,18 @@ import { Route, Routes } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { refresh } from 'redux/userOperations';
 
-import { Header, Loader, PrivateRoute, RestrictedRoute, Container } from 'components';
+import {
+    Header,
+    Loader,
+    PrivateRoute,
+    RestrictedRoute,
+    Container,
+} from 'components';
 
 const Home = lazy(() => import('pages/Home/Home'));
 const Login = lazy(() => import('pages/Login/Login'));
 const Register = lazy(() => import('pages/Register/Register'));
 const Diary = lazy(() => import('pages/Diary/Diary'));
-// const AddInDiary = lazy(() => import('pages/Diary/Input/AddInDiary'));
 const Calculator = lazy(() => import('pages/Calculator/Calculator'));
 const PageNotFound = lazy(() => import('pages/PageNotFound/PageNotFound'));
 

@@ -1,12 +1,8 @@
 import axios from 'axios';
-// import api from 'services/api';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// import { useDispatch } from 'react-redux';
-// import { store } from './store';
 
 const { REACT_APP_BASE_URL } = process.env;
 
-// // const instance = axios.create({ baseURL: REACT_APP_BASE_URL }); ////////////////
 axios.defaults.baseURL = REACT_APP_BASE_URL;
 
 export const setToken = token => {
@@ -15,7 +11,6 @@ export const setToken = token => {
         : '';
 };
 
-// let count = 2;
 axios.interceptors.response.use(
     response => response,
     async error => {

@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import api from 'services/api';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const getAllProducts = createAsyncThunk(
@@ -7,7 +6,6 @@ export const getAllProducts = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const { data } = await axios.get(`/products`);
-            // console.log('data: ', data);
             return data;
         } catch (error) {
             return rejectWithValue(error);
@@ -20,7 +18,6 @@ export const add = createAsyncThunk(
     async (product, { rejectWithValue }) => {
         try {
             const { data } = await axios.post(`/products`, product);
-            // console.log('data: ', data);
             return data;
         } catch (error) {
             return rejectWithValue(error);

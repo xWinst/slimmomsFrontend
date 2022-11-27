@@ -1,15 +1,7 @@
-// import { useSelector, useDispatch } from 'react-redux';
 import { Icon } from 'components';
-// import { getUserProducts } from 'redux/productOperation';
 import s from './ProductList.module.css';
 
 const ProductList = ({ list, remove }) => {
-    // const products = useSelector(state => state.product.products);
-    // // const user = useSelector(state => state.user.userData.id);
-    // // console.log('user: ', user);
-    // const dispatch = useDispatch();
-    // if (!products) {
-    //     dispatch(getUserProducts());
 
     return (
         <ul className={s.list}>

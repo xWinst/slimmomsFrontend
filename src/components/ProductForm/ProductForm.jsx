@@ -24,7 +24,6 @@ const ProductForm = () => {
     };
 
     const addProduct = () => {
-        console.log('product: ', product);
         const { name, calories, weight, defaultWeight } = product;
         dispatch(
             add({

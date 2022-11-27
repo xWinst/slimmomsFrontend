@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import s from './Container.module.css';
 const Container = ({ children }) => {
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);
-    // const isRefreshingUser = useSelector(state => state.auth.isRefreshingUser);
     const [open, setOpen] = useState(false);
     const closeModal = () => {
         setOpen(!open);
