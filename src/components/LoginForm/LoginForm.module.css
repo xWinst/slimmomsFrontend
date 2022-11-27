@@ -13,6 +13,9 @@
     margin-bottom: 40px;
 }
 
+.formLabel {
+    position: relative;
+}
 .formInput {
     border: none;
     font-size: 14px;
@@ -40,11 +43,24 @@
     box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
     border-radius: 30px;
 }
+.formBtn:disabled {
+    background-color: hsla(25, 97%, 58%, 0.253);
+}
 .formBtn:hover,
 .formBtn:focus {
     color: #fc842d;
     background-color: #fff;
     border: 4px solid #fc842d;
+}
+
+.errorCont {
+    position: absolute;
+    top: 25px;
+    left: 20px;
+}
+.errorText {
+    color: red;
+    font-size: 12px;
 }
 
 @media screen and (min-width: 768px) {

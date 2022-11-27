@@ -6,7 +6,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const { REACT_APP_BASE_URL } = process.env;
 
-// const instance = axios.create({ baseURL: REACT_APP_BASE_URL }); ////////////////
+// // const instance = axios.create({ baseURL: REACT_APP_BASE_URL }); ////////////////
 axios.defaults.baseURL = REACT_APP_BASE_URL;
 
 export const setToken = token => {
@@ -19,35 +19,18 @@ export const setToken = token => {
 axios.interceptors.response.use(
     response => response,
     async error => {
-        // console.log(error.config.headers.Authorization);
         if (error.response.status === 401) {
-            // count--;
-            // console.log('axios ', axios);
-            // console.log('start headers: ', axios.defaults.headers);
-            // console.log('start error.headers: ', error.config.headers);
             const refreshToken = localStorage.getItem('refreshToken');
-            // console.log('refreshToken: ', refreshToken.length);
-            // console.log('????', JSON.parse(localStorage.getItem('persist:user')));
+
             try {
-                // const { dispatch } = store;
-                // console.log('data: ', data);
                 const { data } = await axios.post('/users/refresh', {
                     refreshToken,
                 });
-                // console.log('data: ', data);
-                // // refresh();
-                // console.log('2222');
                 setToken(data.accessToken);
-                // console.log('axios.defaults.headers: ', axios.defaults.headers);
-                // console.log('error.config.headers: ', error.config.headers);
                 localStorage.setItem('refreshToken', data.refreshToken);
                 error.config.headers.Authorization = `Bearer ${data.accessToken}`;
+
                 return axios(error.config);
-                // if (count)
-                // else {
-                //     count = 2;
-                //     return null;
-                // }
             } catch (error) {
                 console.log('error: ', error);
                 return Promise.reject(error);
@@ -76,13 +59,7 @@ export const registration = createAsyncThunk(
     async (credentials, { rejectWithValue, dispatch }) => {
         try {
             const { data } = await axios.post('/users/register', credentials);
-            // dispatch(logIn(credentials));
-            // return data;
-            console.log(data);
         } catch (error) {
-            // if (error.response.status === 409) {
-            //     dispatch(logIn(credentials));
-            // } else
             return rejectWithValue(error);
         }
     }
@@ -94,7 +71,6 @@ export const logOut = createAsyncThunk(
         try {
             await axios.get('/users/logout');
             setToken(null);
-            // dispatch(resetStatistics());
         } catch (error) {
             return rejectWithValue(error);
         }
@@ -117,10 +93,7 @@ export const refresh = createAsyncThunk(
     'users/refresh',
     async (_, thunkAPI) => {
         const refreshToken = thunkAPI.getState().user.refreshToken;
-        // console.log('refreshToken: ', refreshToken);
         const isLoggedIn = thunkAPI.getState().user.isLoggedIn;
-        // console.log('isLoggedIn: ', isLoggedIn);
-        // console.log('REFRESH !!!! ');
         if (!refreshToken || isLoggedIn)
             return thunkAPI.rejectWithValue('CANCEL');
         setToken(refreshToken);
@@ -129,7 +102,6 @@ export const refresh = createAsyncThunk(
             const { data } = await axios.post('/users/refresh', {
                 refreshToken,
             });
-            // console.log('REFRESH data: ', data);
             localStorage.setItem('refreshToken', data.refreshToken);
             setToken(data.accessToken);
             thunkAPI.dispatch(getUser());
