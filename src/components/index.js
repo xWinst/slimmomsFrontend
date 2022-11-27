@@ -13,5 +13,7 @@ export { default as RegisterForm } from './RegisterForm/RegisterForm';
 export { default as TeamBTN } from './TeamBTN/TeamBTN';
 export { default as ModalTeam } from './ModalTeam/ModalTeam';
 export { default as ProductList } from './ProductList/ProductList';
-export { default as SummaryForDate } from './SummaryForDate/SummaryForDate';
+export { default as Summary } from './Summary/Summary';
 export { default as ProductForm } from './ProductForm/ProductForm';
+export { default as Select } from './Select/Select';
+export { default as CalculatorForm } from './CalculatorForm/CalculatorForm';

@@ -23,7 +23,7 @@
     <symbol id = "plus"  viewBox="0 0 14 14">
         <path d="M13.72 7.96003H7.96003V13.72H6.04003V7.96003H0.280029V6.04003H6.04003V0.280029H7.96003V6.04003H13.72V7.96003Z" fill="white"/>
     </symbol>
-    <symbol id="close" fill="blue" viewBox="0 0 14 14">
-        <path d="M1 1 12 12M1 13 13 1" stroke-width="2"/>
+    <symbol id="close" viewBox="0 0 14 14">
+        <path d="M1 1 12 12M1 13 13 1" stroke-width="2" stroke="#9B9FAA"/>
     </symbol>
 </svg>

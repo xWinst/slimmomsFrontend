@@ -1,10 +1,10 @@
 import { ModalTeam, TeamBTN } from 'components';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import s from './Container.module.css';
-const isLoggedIn = false;
 const Container = ({ children }) => {
-
+    const isLoggedIn = useSelector(state => state.user.isLoggedIn);
     // const isRefreshingUser = useSelector(state => state.auth.isRefreshingUser);
     const [open, setOpen] = useState(false);
     const closeModal = () => {
@@ -37,9 +37,12 @@ const Container = ({ children }) => {
         };
     });
 
-    return <div className={isLoggedIn ? s.containerLoggedIn : s.container}>{children}
-        <TeamBTN handler={toggleModal} />
-    {open && <ModalTeam open={open} handler={closeModal} />}
-    </div>;
+    return (
+        <div className={isLoggedIn ? s.containerLoggedIn : s.container}>
+            {children}
+            <TeamBTN handler={toggleModal} />
+            {open && <ModalTeam open={open} handler={closeModal} />}
+        </div>
+    );
 };
 export default Container;

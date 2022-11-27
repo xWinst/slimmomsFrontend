@@ -1,7 +1,7 @@
 .form {
     display: flex;
     margin-top: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .button {
@@ -12,6 +12,7 @@
     align-items: center;
     justify-content: center;
     background-color: #fc842d;
+    cursor: pointer;
 }
 
 .input {
@@ -36,4 +37,7 @@
     width: 107px;
     margin-right: 60px;
     text-align: right;
+
+    appearance: none;
+    -moz-appearance: textfield;
 }

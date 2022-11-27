@@ -1,0 +1,23 @@
+.container {
+    padding-left: 100px;
+}
+
+.title {
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 14px;
+    color: #212121;
+}
+
+.summary {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 60px;
+
+    color: #9b9faa;
+}
+
+.text {
+    color: #9b9faa;
+}

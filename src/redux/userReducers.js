@@ -1,7 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import message from 'helpers/Message';
-// import { registration, logIn, logOut, refresh, getUser, setUserBalance } from './userOperations';
-import { logIn, logOut, registration, refresh, getUser } from './userOperations';
+import {
+    logIn,
+    logOut,
+    registration,
+    refresh,
+    getUser,
+    setDailyRate,
+} from './userOperations';
 
 const initialState = {
     isLoading: false,
@@ -9,8 +15,6 @@ const initialState = {
     accessToken: null,
     refreshToken: null,
     userData: null,
-    // allProducts: [],
-    // products: [],
 };
 const userSlice = createSlice({
     name: 'user',
@@ -26,7 +30,11 @@ const userSlice = createSlice({
         },
         [registration.rejected]: (state, action) => {
             state.isLoading = false;
-            message.error('Registration error', `${action.payload.message}`, 'Ok');
+            message.error(
+                'Registration error',
+                `${action.payload.message}`,
+                'Ok'
+            );
         },
 
         [logIn.pending]: state => {
@@ -51,16 +59,14 @@ const userSlice = createSlice({
             state.userData = null;
         },
         [logOut.rejected]: (state, action) => {
-            message.error('LogIn error', `${action.payload.message}`, 'Ok');
+            message.error('LogOut error', `${action.payload.message}`, 'Ok');
         },
         [refresh.pending]: state => {
             state.isLoading = true;
         },
         [refresh.fulfilled]: (state, action) => {
             state.refreshToken = action.payload.refreshToken;
-            // state.sid = action.payload.newSid;
             state.isLoading = false;
-            // state.isLoggedIn = true;
         },
         [refresh.rejected]: (state, action) => {
             state.isLoading = false;
@@ -76,6 +82,14 @@ const userSlice = createSlice({
         },
         [getUser.rejected]: (state, action) => {
             state.isLoading = false;
+            console.log('getUser error: ', action.payload);
+        },
+
+        [setDailyRate.fulfilled]: (state, action) => {
+            state.userData.dailyRate = action.payload;
+        },
+        [setDailyRate.rejected]: (state, action) => {
+            console.log('refresh error: ', action.payload);
         },
     },
 });

@@ -1,7 +1,7 @@
 .userMenuWrapper {
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     padding: 4px 0;
     background-color: #eff1f3;
 }

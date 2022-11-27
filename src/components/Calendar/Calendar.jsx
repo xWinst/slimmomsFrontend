@@ -1,14 +1,24 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import { Icon } from 'components';
+import { chooseDate } from 'redux/productReducers';
 import s from './Calendar.module.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const Calendar = ({ getDate, initial }) => {
-    const [date, setDate] = useState(initial);
+const Calendar = () => {
+    const [date, setDate] = useState(new Date());
+    const dispatch = useDispatch();
+    useEffect(() => {
+        const changeDate = () => {
+            const year = date.getFullYear();
+            const month = date.getMonth();
+            const day = date.getDate();
 
-    useEffect(() => getDate(date));
-    useEffect(() => setDate(new Date()), [initial]); //reset
+            dispatch(chooseDate(day + '-' + month + '-' + year));
+        };
+        changeDate();
+    }, [dispatch, date]);
 
     return (
         <div className={s.container}>

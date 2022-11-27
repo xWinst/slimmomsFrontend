@@ -1,10 +1,14 @@
-import styles from './Button.module.css';
+import s from './Button.module.css';
 
 const Button = ({ text, customType, type, children, className, onClick }) => {
-    const addType = customType === 'primary' ? styles.primary : styles.secondary;
-    const addClass = styles[className];
+    const addType = customType === 'primary' ? s.primary : s.secondary;
+    const addClass = s[className];
     return (
-        <button type={type} className={`${styles.button} ${addType} ${addClass}`} onClick={onClick}>
+        <button
+            type={type}
+            className={`${s.button} ${addType} ${addClass}`}
+            onClick={onClick}
+        >
             {text}
             {children}
         </button>

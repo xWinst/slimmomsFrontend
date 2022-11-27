@@ -1,28 +1,39 @@
 // import { NavLink } from 'react-router-dom';
-// import { useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllProducts } from 'redux/productOperation';
-import { ProductList, SummaryForDate, ProductForm } from 'components';
-import s from './Diary.module.css';
+import {
+    getAllProducts,
+    getUserProducts,
+    deleteUserProducts,
+} from 'redux/productOperation';
+import { ProductList, Summary, ProductForm } from 'components';
+// import s from './Diary.module.css';
+import s from '../index.module.css';
 
 const Diary = () => {
     const allProducts = useSelector(state => state.product.allProducts);
+    const products = useSelector(state => state.product.products);
+    const date = useSelector(state => state.product.date);
 
     const dispatch = useDispatch();
-    if (!allProducts) {
-        dispatch(getAllProducts());
-    }
+
+    useEffect(() => {
+        dispatch(getUserProducts(date));
+    }, [dispatch, date]);
+
+    if (!allProducts) dispatch(getAllProducts());
+
+    const remove = id => {
+        dispatch(deleteUserProducts(id));
+    };
 
     return (
         <div className={s.container}>
-            <div className={s.diary}>
+            <div className={s.side}>
                 <ProductForm />
-                <ProductList />
+                <ProductList list={products ?? []} remove={remove} />
             </div>
-            <div></div>
-            {/* <h2 className={s.date}>date</h2>
-            <NavLink to="/addindiary">+</NavLink> */}
-            <SummaryForDate />
+            <Summary />
         </div>
     );
 };
