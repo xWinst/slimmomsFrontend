@@ -6,7 +6,7 @@
 .list {
     position: absolute;
     left: 0;
-    top: -40px;
+    top: -160px;
     max-height: 280px;
     margin: 0;
     padding: 0;
@@ -63,5 +63,9 @@
         /* .container {
             width: 220px;
         } */
+
+        .list {
+            top: -40px;
+        }
     }
 }

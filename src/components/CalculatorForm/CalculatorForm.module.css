@@ -3,29 +3,36 @@
 }
 
 .title {
-    width: 600px;
+    width: 280px;
     font-weight: 700;
-    font-size: 34px;
-    color: #212121;
+    font-size: 18px;
+    color: var(--main-color);
 }
 
 .form {
-    margin: 60px 0;
+    margin: 5px 0;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .input {
     width: 240px;
     margin-right: 32px;
-    padding: 20px 0;
+    padding: 24px 0 8px 0;
+    font-weight: 700;
     border: none;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--line-color);
 }
 
-.input2 {
-    composes: input;
-    border-bottom: 3px solid #e0e0e0;
+.input::placeholder {
+    color: var(--muted-color);
+    opacity: 1;
+}
+
+.legend {
+    margin-top: 20px;
+    font-weight: 700;
+    color: var(--muted-color);
 }
 
 .group {
@@ -36,13 +43,12 @@
 
 .btns {
     display: flex;
-    gap: 40px;
+    gap: 34px;
 }
 
 .btn {
     width: 210px;
-    margin-left: 330px;
-    margin-top: 60px;
+    margin: 40px auto;
     border: none;
     padding: 13px;
     font-weight: 700;
@@ -72,20 +78,21 @@
 }
 
 .error {
-    margin: -14px 0 0;
-    font-size: 10px;
+    margin: 0 0 0 0;
+    font-size: 8px;
     color: #ff0000;
 }
 
 .modalContainer {
     width: 330px;
     text-align: center;
+    padding: 40px 20px;
 }
 
 .modalTitle {
     font-weight: 700;
-    font-size: 26px;
-    margin-bottom: 20px;
+    font-size: 18px;
+    margin-bottom: 40px;
 }
 
 .rate {
@@ -100,9 +107,10 @@
 }
 
 .line {
+    width: 280px;
     height: 0;
-    margin: 0 auto;
-    border-bottom: 1px solid #e0e0e0;
+    /* margin: 0 auto; */
+    border-bottom: 1px solid var(--line-color);
 }
 
 .text {
@@ -119,16 +127,16 @@
     width: 20px;
     height: 20px;
     border-radius: 50px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--line-color);
     cursor: pointer;
 }
 
 .radio:checked {
-    border: 1px solid #fc842d;
+    border: 1px solid var(--accent-color);
     background-image: radial-gradient(
         circle at center,
-        #fc842d 6px,
-        #ffffff 6px
+        var(--accent-color) 6px,
+        var(--bg-color) 6px
     );
 }
 
@@ -143,4 +151,35 @@
     composes: label;
     font-weight: 700;
     color: #fc842d;
+}
+
+@media screen and (min-width: 1280px) {
+    .title {
+        width: 600px;
+        font-size: 34px;
+    }
+
+    .form {
+        margin: 60px 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        margin-left: 330px;
+        margin-top: 60px;
+    }
+
+    .input {
+        padding: 20px 0;
+    }
+
+    .error {
+        font-size: 10px;
+    }
+
+    .modalTitle {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
 }

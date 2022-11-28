@@ -26,4 +26,7 @@
     <symbol id="close" viewBox="0 0 14 14">
         <path d="M1 1 12 12M1 13 13 1" stroke-width="2" stroke="#9B9FAA"/>
     </symbol>
+    <symbol id="goBack" fill="none" viewBox="0 0 15 9">
+        <path d="M14 1.5V4.5H2M2 5L6 1M2 4L6 8" stroke-width="2"/>
+    </symbol>
 </svg>

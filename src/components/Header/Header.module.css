@@ -1,5 +1,6 @@
 .headWrapper {
-    /* position: fixed; */
+    /* position: fixed;
+    top: 0; */
     /* top: 0;
     width: 100%;
     height: 56px;
@@ -8,9 +9,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: solid 2px #e0e0e0;
+    /* border-bottom: solid 2px var(--line-color); */
     padding: 20px 23px 16px 20px;
 }
+
+.line {
+    width: 100vw;
+    margin-left: calc((320px - 100vw) / 2);
+    padding: 0 calc((100vw - 320px) / 2);
+    height: 0;
+    border: solid 1px var(--line-color);
+}
+
 .logoLink {
     display: flex;
     gap: 7px;
@@ -20,11 +30,11 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    fill: #212121;
+    fill: var(--main-color);
 }
 .menuBtn:hover,
 :focus {
-    fill: #fc842d;
+    fill: var(--accent-color);
 }
 
 .logoAndNavBarWrapp {

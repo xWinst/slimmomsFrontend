@@ -1,9 +1,11 @@
 .userMenuWrapper {
     display: flex;
+    width: 100vw;
+    margin-left: calc((320px - 100vw) / 2);
     align-items: center;
     justify-content: flex-end;
-    padding: 4px 0;
-    background-color: #eff1f3;
+    padding: 4px calc((100vw - 320px) / 2);
+    background-color: var(--bg-secondary-color);
 }
 
 .loginName {
@@ -12,7 +14,6 @@
     line-height: 13px;
     text-align: right;
     letter-spacing: 0.04em;
-    color: #212121;
     margin-right: 20px;
 }
 
@@ -27,7 +28,7 @@
     cursor: pointer;
     background-color: transparent;
     padding: 10px 20px;
-    border-left: 2px solid #e0e0e0;
+    border-left: 2px solid var(--line-color);
 }
 @media screen and (min-width: 768px) {
     .userMenuWrapper {

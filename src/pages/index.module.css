@@ -4,16 +4,62 @@
 
 .container {
     display: flex;
-    padding-top: 140px;
+    flex-direction: column;
+    padding: 32px 20px;
 }
 
-.side {
+.button {
+    width: 48px;
+    height: 48px;
+    margin: 60px auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent-color);
+    cursor: pointer;
+}
+
+.button:hover {
+    transform-origin: center center;
+    animation: spinner 1.5s linear;
+}
+
+/* .side {
     width: 763px;
     flex-shrink: 0;
+} */
+
+.modalContainer {
+    width: 100vw;
+    /* margin-left: calc((280px - 100vw) / 2); */
+    padding: 0 calc((100vw - 280px) / 2);
+}
+
+@keyframes spinner {
+    40% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
 }
 
 @media screen and (min-width: 768px) {
 }
 
 @media screen and (min-width: 1280px) {
+    .container {
+        display: flex;
+        padding-top: 140px;
+    }
+
+    .side {
+        width: 763px;
+        flex-shrink: 0;
+    }
+
+    .container {
+        flex-direction: row;
+    }
 }

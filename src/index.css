@@ -3,12 +3,19 @@
 
 :root {
     --main-color: #212121;
-    /* --accent-color: #ff751d;
+    --line-color: #e0e0e0;
+    --muted-color: #9b9faa;
+    --bg-color: #ffffff;
+    --bg-secondary-color: #eff1f3;
+    --bg-tertiary-color: #f0f1f3;
+    --accent-color: #fc842d;
+
+    --box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+    --transition: background-color 300ms ease, color 300ms ease;
+    /* 
     --avatar-bg-color: #f5f6fa;
     --separate-line-color: #E0E0E0;
     --input-bg-color: #f6f7fb;
-    --bg-color: #ffffff;
-    --bg-secondary-color: #f2f5fc;
     --bg-link-color: #f5f6fb;
     --text-color-three: #a6abb9;
     --placeholder-color: #c7ccdc;
@@ -16,12 +23,11 @@
     --active-link-bg-color: #fefefe;
     --inactive-link-bg-color: #fafbfd;
 
-    --box-shadow: 1px 3px 5px #aab2c533;
-    --transition: background-color 300ms ease, color 300ms ease; */
 
     --mobile: 480px;
     --tablet: 768px;
-    --desktop: 1280px;
+    --desktop: 1280px; 
+    */
 }
 
 body {
@@ -29,8 +35,9 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     line-height: 1.2;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
     color: var(--main-color);
+    background-color: var(--bg-color);
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -66,6 +73,10 @@ ol {
     padding: 0;
     margin: 0;
     list-style: none;
+}
+
+input {
+    letter-spacing: inherit;
 }
 
 input:focus {

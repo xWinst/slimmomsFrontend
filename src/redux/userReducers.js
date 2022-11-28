@@ -10,7 +10,7 @@ import {
 } from './userOperations';
 
 const initialState = {
-    isLoading: false,
+    isLoading: true,
     isLoggedIn: false,
     accessToken: null,
     refreshToken: null,
@@ -66,7 +66,7 @@ const userSlice = createSlice({
         },
         [refresh.fulfilled]: (state, action) => {
             state.refreshToken = action.payload.refreshToken;
-            state.isLoading = false;
+            // state.isLoading = false;
         },
         [refresh.rejected]: (state, action) => {
             state.isLoading = false;

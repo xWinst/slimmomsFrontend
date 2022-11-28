@@ -1,12 +1,11 @@
 import s from './Button.module.css';
 
-const Button = ({ text, customType, type, children, className, onClick }) => {
+const Button = ({ text, customType, type = 'button', children, onClick }) => {
     const addType = customType === 'primary' ? s.primary : s.secondary;
-    const addClass = s[className];
     return (
         <button
             type={type}
-            className={`${s.button} ${addType} ${addClass}`}
+            className={`${s.button} ${addType}`}
             onClick={onClick}
         >
             {text}
