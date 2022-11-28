@@ -1,21 +1,37 @@
+path.team__path {
+    stroke: #fc842d;
+    stroke-width: 6;
+    stroke-dasharray: 2488;
+    stroke-dashoffset: 2488;
+    animation: draw 3s infinite forwards;
+}
+
+@keyframes draw {
+    100% {
+        stroke-dashoffset: 0;
+        /* stroke-dasharray: 0; */
+    }
+}
+
 @media (min-width: 1280px) {
     .btn__container {
         position: fixed;
-        bottom: 20px;
+        bottom: 0px;
         right: 20px;
         z-index: 100;
     }
     .team__icon {
-        width: 75px;
+        width: 200px;
+        height: 197px;
         border-radius: 50%;
         background-color: transparent;
 
-        transform: scale(1.4);
+        transform: scale(1.1);
         transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .team__icon:hover {
-        transform: scale(2.0);
+        transform: scale(1.4);
         cursor: pointer;
     }
 }
@@ -36,12 +52,12 @@
 
         background-color: transparent;
 
-        transform: scale(1.4);
+        transform: scale(1.1);
         transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .team__icon:hover {
-        transform: scale(2.0);
+        transform: scale(1.4);
     }
 }
 
@@ -69,7 +85,7 @@
     }
 
     .team__icon:hover {
-        transform: scale(2.0);
+        transform: scale(1.4);
     }
 }
 
