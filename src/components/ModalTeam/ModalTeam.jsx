@@ -15,18 +15,33 @@ const ModalTeam = ({ open, handler }) => {
             {open && (
                 <div className={s.backdrop}>
                     <div className={s.team__container}>
-                        <CloseIcon className={s.close__icon} onClick={handler} />
+                        <CloseIcon
+                            className={s.close__icon}
+                            onClick={handler}
+                        />
                         <div className={s.card__wrapper}>
                             <div className={s.card}>
-                                <img src={oleg} alt="1" className={s.img} width="260" height="260" />
+                                <img
+                                    src={oleg}
+                                    alt="1"
+                                    className={s.img}
+                                    width="260"
+                                    height="260"
+                                />
                             </div>
                             <div className={s.title__container}>
-                                <h3 className={s.member__title}>Oleg Chuchin</h3>
+                                <h3 className={s.member__title}>
+                                    Oleg Chuchin
+                                </h3>
                                 <p className={s.role__text}>Team Lead</p>
                             </div>
                             <ul className={s.social__list}>
                                 <li className={s.list__item}>
-                                    <a className={s.social__link} href="https://github.com/xWinst" target="blank">
+                                    <a
+                                        className={s.social__link}
+                                        href="https://github.com/xWinst"
+                                        target="blank"
+                                    >
                                         <GitHubIcon className={s.github} />
                                     </a>
                                 </li>
@@ -43,15 +58,27 @@ const ModalTeam = ({ open, handler }) => {
                         </div>
                         <div className={s.card__wrapper}>
                             <div className={s.card}>
-                                <img src={volodymyr} alt="1" className={s.img} width="260" height="260" />
+                                <img
+                                    src={volodymyr}
+                                    alt="1"
+                                    className={s.img}
+                                    width="260"
+                                    height="260"
+                                />
                             </div>
                             <div className={s.title__container}>
-                                <h3 className={s.member__title}>Volodymyr Bondarenko</h3>
+                                <h3 className={s.member__title}>
+                                    Volodymyr Bondarenko
+                                </h3>
                                 <p className={s.role__text}>Scrum master</p>
                             </div>
                             <ul className={s.social__list}>
                                 <li className={s.list__item}>
-                                    <a className={s.social__link} href="https://github.com/Qweeqer" target="blank">
+                                    <a
+                                        className={s.social__link}
+                                        href="https://github.com/Qweeqer"
+                                        target="blank"
+                                    >
                                         <GitHubIcon className={s.github} />
                                     </a>
                                 </li>
@@ -68,15 +95,27 @@ const ModalTeam = ({ open, handler }) => {
                         </div>
                         <div className={s.card__wrapper}>
                             <div className={s.card}>
-                                <img src={oleksandr} alt="1" className={s.img} width="260" height="260" />
+                                <img
+                                    src={oleksandr}
+                                    alt="1"
+                                    className={s.img}
+                                    width="260"
+                                    height="260"
+                                />
                             </div>
                             <div className={s.title__container}>
-                                <h3 className={s.member__title}>Oleksandr Zhovtyi</h3>
+                                <h3 className={s.member__title}>
+                                    Oleksandr Zhovtyi
+                                </h3>
                                 <p className={s.role__text}>Developer</p>
                             </div>
                             <ul className={s.social__list}>
                                 <li className={s.list__item}>
-                                    <a className={s.social__link} href="https://github.com/AleksZhov" target="blank">
+                                    <a
+                                        className={s.social__link}
+                                        href="https://github.com/AleksZhov"
+                                        target="blank"
+                                    >
                                         <GitHubIcon className={s.github} />
                                     </a>
                                 </li>
@@ -93,20 +132,36 @@ const ModalTeam = ({ open, handler }) => {
                         </div>
                         <div className={s.card__wrapper}>
                             <div className={s.card}>
-                                <img src={oleksandralemaev} alt="1" className={s.img} width="260" height="260" />
+                                <img
+                                    src={oleksandralemaev}
+                                    alt="1"
+                                    className={s.img}
+                                    width="260"
+                                    height="260"
+                                />
                             </div>
                             <div className={s.title__container}>
-                                <h3 className={s.member__title}>Oleksandr Alemaev</h3>
+                                <h3 className={s.member__title}>
+                                    Oleksandr Alemaev
+                                </h3>
                                 <p className={s.role__text}>Developer</p>
                             </div>
                             <ul className={s.social__list}>
                                 <li className={s.list__item}>
-                                    <a className={s.social__link} href="https://github.com/Oleksandr26" target="blank">
+                                    <a
+                                        className={s.social__link}
+                                        href="https://github.com/Oleksandr26"
+                                        target="blank"
+                                    >
                                         <GitHubIcon className={s.github} />
                                     </a>
                                 </li>
                                 <li className={s.list__item}>
-                                    <a className={s.social__link} href="https://www.linkedin.com/" target="blank">
+                                    <a
+                                        className={s.social__link}
+                                        href="https://www.linkedin.com/in/oleksandr-alemaev-775766247"
+                                        target="blank"
+                                    >
                                         <LinkInIcon className={s.linkin} />
                                     </a>
                                 </li>
