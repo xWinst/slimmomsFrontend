@@ -1,4 +1,5 @@
 import s from './LoginForm.module.css';
+import GoogleLogo from '../../images/googleLogo.svg';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -36,16 +37,6 @@ const LoginForm = () => {
     };
     return (
         <form className={s.loginForm} onSubmit={onHandleSubmit}>
-            {/* <p className={s.googleText}>You can log in with your Google Account:</p>
-            <button
-                onClick={() => {
-                    login();
-                }}
-                className={s.googleBtn}
-                type="button"
-            >
-                <img src={GoogleLogo} alt="Google logo" />
-            </button> */}
             <h2 className={s.formHeading}>Log in</h2>
             <label className={s.formLabel}>
                 <input
@@ -105,6 +96,12 @@ const LoginForm = () => {
             <button type="submit" disabled={!isValid} className={s.formBtn}>
                 Login
             </button>
+            <a
+                className={s.googleBtn}
+                href="http://localhost:4000/api/users/google"
+            >
+                <img src={GoogleLogo} alt="Google logo" />
+            </a>
         </form>
     );
 };

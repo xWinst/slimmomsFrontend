@@ -4,12 +4,28 @@ import SlimMomsLogoDesktop from '../../images/slim-mom-logo-desktop.svg';
 import SlimText from '../../images/Slim.svg';
 import MomText from '../../images/Mom.svg';
 import { Link } from 'react-router-dom';
-import { NavBar, UserMenu } from 'components';
+import { NavBar, UserMenu, ConfirmationModal } from 'components';
+import { useState } from 'react';
 import { useWidth } from 'hooks/useWidth';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { logOut } from 'redux/userOperations';
 const Header = ({ isHidden }) => {
+    const dispatch = useDispatch();
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const width = useWidth();
+
+    const onModalCloseHandle = () => {
+        setIsModalOpen(false);
+    };
+    const onModalOpenHandle = () => {
+        setIsModalOpen(true);
+    };
+
+    const logoutHandle = () => {
+        dispatch(logOut());
+        setIsModalOpen(false);
+    };
     return (
         <header>
             <div className={s.headWrapper}>
@@ -55,14 +71,28 @@ const Header = ({ isHidden }) => {
                 )}
 
                 <div className={s.userMenuAndBurgerWrapp}>
-                    {isLoggedIn && width > 767 && <UserMenu></UserMenu>}
+
+                    {isLoggedIn && width > 767 && (
+                        <UserMenu onOpenModalClick={onModalOpenHandle} />
+                    )}
+
                     {isLoggedIn && width < 1280 && (
                         <NavBar isLoggedIn={isLoggedIn} isHidden={isHidden} />
                     )}
                 </div>
             </div>
-            <div className={s.line}></div>
-            {isLoggedIn && width < 768 && <UserMenu></UserMenu>}
+
+            {isLoggedIn && width < 768 && (
+                <UserMenu onOpenModalClick={onModalOpenHandle} />
+            )}
+            {isModalOpen && (
+                <ConfirmationModal
+                    text="Are you sure want to log out?"
+                    onConfirm={logoutHandle}
+                    onClose={onModalCloseHandle}
+                />
+            )}
+
         </header>
     );
 };

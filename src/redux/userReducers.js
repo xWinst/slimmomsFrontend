@@ -19,7 +19,14 @@ const initialState = {
 const userSlice = createSlice({
     name: 'user',
     initialState,
-
+    reducers: {
+        google: (state, action) => {
+            state.userData = action.payload.user;
+            state.accessToken = action.payload.accessToken;
+            state.refreshToken = action.payload.refreshToken;
+            state.isLoggedIn = true;
+        },
+    },
     extraReducers: {
         [registration.pending]: state => {
             state.isLoading = true;
@@ -93,5 +100,5 @@ const userSlice = createSlice({
         },
     },
 });
-
+export const { google } = userSlice.actions;
 export default userSlice.reducer;

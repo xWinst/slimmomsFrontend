@@ -1,20 +1,20 @@
 import s from './UserMenu.module.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { logOut } from 'redux/userOperations';
+import { useSelector } from 'react-redux';
 
-const UserMenu = () => {
-    const dispatch = useDispatch();
+function UserMenu({ onOpenModalClick }) {
     const userName = useSelector(state => state.user.userData.name);
-    const onExitBtnHandle = () => {
-        dispatch(logOut());
-    };
+
     return (
         <div className={s.userMenuWrapper}>
             <p className={s.loginName}>{userName}</p>
-            <button className={s.exitBtn} type="button" onClick={onExitBtnHandle}>
+            <button
+                className={s.exitBtn}
+                type="button"
+                onClick={() => onOpenModalClick()}
+            >
                 Exit
             </button>
         </div>
     );
-};
+}
 export default UserMenu;

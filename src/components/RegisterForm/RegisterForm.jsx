@@ -2,6 +2,7 @@ import s from '../LoginForm/LoginForm.module.css';
 import { useForm } from 'react-hook-form';
 // import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import GoogleLogo from '../../images/googleLogo.svg';
 import { registration } from 'redux/userOperations';
 
 const RegisterForm = () => {
@@ -13,42 +14,15 @@ const RegisterForm = () => {
     } = useForm({ mode: 'onBlur' });
 
     const dispatch = useDispatch();
-    // const [formFields, setFormFields] = useState({
-    //     name: '',
-    //     email: '',
-    //     password: '',
-    // });
-
-    // const handleChange = event => {
-    //     const { name, value } = event.currentTarget;
-    //     setFormFields(prevState => ({ ...prevState, [name]: value }));
-    // };
-
-    // const reset = () => {
-    //     setFormFields({
-    //         name: '',
-    //         email: '',
-    //         password: '',
-    //     });
-    // };
 
     const onHandleSubmit = data => {
         dispatch(registration(data));
 
         reset();
     };
+
     return (
         <form className={s.loginForm} onSubmit={handleSubmit(onHandleSubmit)}>
-            {/* <p className={s.googleText}>You can log in with your Google Account:</p>
-            <button
-                onClick={() => {
-                    login();
-                }}
-                className={s.googleBtn}
-                type="button"
-            >
-                <img src={GoogleLogo} alt="Google logo" />
-            </button> */}
             <h2 className={s.formHeading}>Register</h2>
             <label className={s.formLabel}>
                 <input
@@ -61,14 +35,8 @@ const RegisterForm = () => {
                         maxLength: 15,
                     })}
                     className={s.formInput}
-                    // type="text"
-                    // name="name"
-                    // value={formFields.name}
-                    // onChange={handleChange}
                     title="Please enter your name"
                     placeholder="Name *"
-                    // min-length="4"
-                    // required
                 />
                 <div className={s.errorCont}>
                     {errors.name && (
@@ -90,13 +58,8 @@ const RegisterForm = () => {
                     })}
                     className={s.formInput}
                     type="email"
-                    // name="email"
-                    // value={formFields.email}
-                    // onChange={handleChange}
                     title="Please enter valid email address, for example  'example@gmail.com'"
                     placeholder="Email *"
-                    // min-length="6"
-                    // required
                 />
                 <div className={s.errorCont}>
                     {errors.email && (
@@ -118,13 +81,8 @@ const RegisterForm = () => {
                     })}
                     className={s.formInput}
                     type="password"
-                    // name="password"
-                    // value={formFields.password}
-                    // onChange={handleChange}
                     title="Please enter your password. Minimum length 8 symbols"
                     placeholder="Password *"
-                    // min-length="6"
-                    // required
                 />
                 <div className={s.errorCont}>
                     {errors.password && (
@@ -138,6 +96,13 @@ const RegisterForm = () => {
             <button type="submit" disabled={!isValid} className={s.formBtn}>
                 Register
             </button>
+
+            <a
+                className={s.googleBtn}
+                href="http://localhost:4000/api/users/google/"
+            >
+                <img src={GoogleLogo} alt="Google logo" />
+            </a>
         </form>
     );
 };

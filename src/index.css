@@ -3,17 +3,8 @@
 
 :root {
     --main-color: #212121;
-    --line-color: #e0e0e0;
-    --muted-color: #9b9faa;
-    --bg-color: #ffffff;
-    --bg-secondary-color: #eff1f3;
-    --bg-tertiary-color: #f0f1f3;
-    --accent-color: #fc842d;
-
-    --box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
-    --transition: background-color 300ms ease, color 300ms ease;
-    /* 
-    --avatar-bg-color: #f5f6fa;
+    --accent-color: #ff751d;
+    /* --avatar-bg-color: #f5f6fa;
     --separate-line-color: #E0E0E0;
     --input-bg-color: #f6f7fb;
     --bg-link-color: #f5f6fb;
