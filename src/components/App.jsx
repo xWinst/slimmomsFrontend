@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { refresh } from 'redux/userOperations';
 import { getAllProducts } from 'redux/productOperation';
+import { chooseDate } from 'redux/productReducers';
 
 import {
     Header,
@@ -19,14 +20,27 @@ const Diary = lazy(() => import('pages/Diary/Diary'));
 const Calculator = lazy(() => import('pages/Calculator/Calculator'));
 const PageNotFound = lazy(() => import('pages/PageNotFound/PageNotFound'));
 
+const getDate = date => {
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const day = date.getDate();
+
+    return day + '-' + month + '-' + year;
+};
+
 export const App = () => {
     const [hasRefresh, setHasRefresh] = useState(false);
     const isLoading = useSelector(state => state.user.isLoading);
+    const allProducts = useSelector(state => state.product.allProducts);
+    const date = useSelector(state => state.product.date);
     const dispatch = useDispatch();
 
+    if (!allProducts) dispatch(getAllProducts());
+    if (!date) {
+        const newDate = getDate(new Date());
+        dispatch(chooseDate(newDate));
+    }
     if (!hasRefresh) {
-        console.log('Refresh?');
-        dispatch(getAllProducts());
         dispatch(refresh());
         setHasRefresh(true);
     }
@@ -47,7 +61,6 @@ export const App = () => {
                         <Route element={<PrivateRoute />}>
                             <Route path="calculator" element={<Calculator />} />
                             <Route path="diary" element={<Diary />} />
-                            {/* <Route path="addindiary" element={<AddInDiary />} /> */}
                         </Route>
                         <Route path="*" element={<PageNotFound />} />
                     </Routes>

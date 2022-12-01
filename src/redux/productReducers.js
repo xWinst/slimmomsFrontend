@@ -70,7 +70,7 @@ const productSlice = createSlice({
                 product => product._id !== action.payload
             );
             let result = 0;
-            action.payload.forEach(product => {
+            state.products.forEach(product => {
                 result += product.calories;
             });
             state.consumed = result;

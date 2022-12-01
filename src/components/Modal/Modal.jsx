@@ -1,13 +1,12 @@
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useWidth } from '../../hooks/useWidth';
 import { Icon } from 'components';
 import s from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const Modal = ({ onClose, children }) => {
+const Modal = ({ onClose, option = 1, children }) => {
     // useEffect(() => {
     //     const handleKeyDown = e => {
     //         if (e.code === 'Escape') {
@@ -42,10 +41,16 @@ const Modal = ({ onClose, children }) => {
 
     return createPortal(
         <div className={s.overlay} onClick={handleBackdropclick}>
-            <div className={s.modal}>
+            <div className={option === 1 ? s.modal : s.modalBottom}>
                 {width <= 768 ? (
-                    <div className={s.iconArrowBack}>
-                        <ArrowBackIcon onClick={onClose} />
+                    <div className={option === 1 ? s.muted : s.transparent}>
+                        <Icon
+                            className={s.goBack}
+                            icon="goBack"
+                            width="15"
+                            height="9"
+                            onClick={onClose}
+                        />
                     </div>
                 ) : (
                     <Icon

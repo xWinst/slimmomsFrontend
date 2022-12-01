@@ -3,7 +3,8 @@ import s from './HarmfulProductsList.module.css';
 
 const getRandomProduct = max => {
     const result = [];
-    while (result.length < 4) {
+    const count = max > 4 ? 4 : max;
+    while (result.length < count) {
         const rnd = Math.floor(Math.random() * max);
         if (result.includes(rnd)) continue;
         result.push(rnd);
@@ -14,7 +15,7 @@ const getRandomProduct = max => {
 const HarmfulProductsList = ({ blood }) => {
     const bloodGroup =
         useSelector(state => state.user.userData?.bloodGroup) || blood;
-    const allProducts = useSelector(state => state.product.allProducts);
+    const allProducts = useSelector(state => state.product.allProducts) || [];
 
     const harmfulProducts = allProducts.filter(
         product => !product.groupBloodNotAllowed[bloodGroup]

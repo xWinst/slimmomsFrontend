@@ -16,6 +16,7 @@ export const getAllProducts = createAsyncThunk(
 export const add = createAsyncThunk(
     'addProduct',
     async (product, { rejectWithValue }) => {
+        console.log('ADD: ', product);
         try {
             const { data } = await axios.post(`/products`, product);
             return data;
@@ -28,6 +29,7 @@ export const add = createAsyncThunk(
 export const getUserProducts = createAsyncThunk(
     'getUserProduct',
     async (date, { rejectWithValue }) => {
+        console.log('date: ', date);
         try {
             const { data } = await axios.get(`/products/${date}`);
             return data;

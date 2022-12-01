@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { setDailyRate } from 'redux/userOperations';
@@ -9,6 +10,7 @@ const CalculatorForm = ({ submit = true }) => {
     const [isShowModal, setIsShowModal] = useState(false);
     const [rate, setRate] = useState();
     const [blood, setBlood] = useState();
+    const navigate = useNavigate();
     const {
         register,
         formState: { errors, isValid },
@@ -38,12 +40,12 @@ const CalculatorForm = ({ submit = true }) => {
     };
 
     const confirm = () => {
-        setIsShowModal(false); //Перейти на регистрацию
+        setIsShowModal(false);
+        navigate('/register');
     };
 
     const getClass = n => (watch('bloodGroup') === n ? s.checked : s.label);
 
-    console.log('bb', watch('bloodGroup'));
     return (
         <div className={s.container}>
             <h2 className={s.title}>
@@ -53,7 +55,7 @@ const CalculatorForm = ({ submit = true }) => {
             <form className={s.form}>
                 <label>
                     <input
-                        className={s.input2}
+                        className={s.input}
                         type="number"
                         {...register('height', {
                             required: 'This is a required field',
@@ -71,6 +73,56 @@ const CalculatorForm = ({ submit = true }) => {
                     <p className={s.error}>
                         {errors?.height ? (
                             `* ${errors.height.message}`
+                        ) : (
+                            <>&nbsp;</>
+                        )}
+                    </p>
+                </label>
+                <label>
+                    <input
+                        className={s.input}
+                        type="number"
+                        {...register('age', {
+                            required: 'This is a required field',
+                            min: {
+                                value: 15,
+                                message:
+                                    'Age must be between 15 - 99 years old',
+                            },
+                            max: {
+                                value: 99,
+                                message:
+                                    'Age must be between 15 - 99 years old',
+                            },
+                        })}
+                        placeholder="Age *"
+                    />
+                    <p className={s.error}>
+                        {errors?.age ? `* ${errors.age.message}` : <>&nbsp;</>}
+                    </p>
+                </label>
+                <label>
+                    <input
+                        className={s.input}
+                        type="number"
+                        {...register('weight', {
+                            required: 'This is a required field',
+                            min: {
+                                value: 40,
+                                message:
+                                    'Current weight must be between 40 - 250 kg',
+                            },
+                            max: {
+                                value: 250,
+                                message:
+                                    'Current weight must be between 40 - 250 kg',
+                            },
+                        })}
+                        placeholder="Current weight *"
+                    />
+                    <p className={s.error}>
+                        {errors?.weight ? (
+                            `* ${errors.weight.message}`
                         ) : (
                             <>&nbsp;</>
                         )}
@@ -103,57 +155,7 @@ const CalculatorForm = ({ submit = true }) => {
                         )}
                     </p>
                 </label>
-                <label>
-                    <input
-                        className={s.input2}
-                        type="number"
-                        {...register('age', {
-                            required: 'This is a required field',
-                            min: {
-                                value: 15,
-                                message:
-                                    'Age must be between 15 - 99 years old',
-                            },
-                            max: {
-                                value: 99,
-                                message:
-                                    'Age must be between 15 - 99 years old',
-                            },
-                        })}
-                        placeholder="Age *"
-                    />
-                    <p className={s.error}>
-                        {errors?.age ? `* ${errors.age.message}` : <>&nbsp;</>}
-                    </p>
-                </label>
-                <legend className={s.input}>Blood type *</legend>
-                <label>
-                    <input
-                        className={s.input}
-                        type="number"
-                        {...register('weight', {
-                            required: 'This is a required field',
-                            min: {
-                                value: 40,
-                                message:
-                                    'Current weight must be between 40 - 250 kg',
-                            },
-                            max: {
-                                value: 250,
-                                message:
-                                    'Current weight must be between 40 - 250 kg',
-                            },
-                        })}
-                        placeholder="Current weight *"
-                    />
-                    <p className={s.error}>
-                        {errors?.weight ? (
-                            `* ${errors.weight.message}`
-                        ) : (
-                            <>&nbsp;</>
-                        )}
-                    </p>
-                </label>
+                <legend className={s.legend}>Blood type *</legend>
                 <fieldset className={s.group} {...register('bloodGroup')}>
                     <div className={s.btns}>
                         <label className={getClass('1')}>
@@ -205,14 +207,13 @@ const CalculatorForm = ({ submit = true }) => {
                 </button>
             </form>
             {isShowModal && (
-                <Modal onClose={close} onConfirm={confirm}>
+                <Modal onClose={close}>
                     <div className={s.modalContainer}>
                         <p className={s.modalTitle}>
-                            {' '}
                             Your recommended daily calorie intake is
                         </p>
                         <p className={s.rate}>
-                            <span className={s.value}>{rate}</span>{' '}
+                            <span className={s.value}>{rate}</span>
                             &nbsp;&nbsp;kcal
                         </p>
                         <div className={s.line}></div>
@@ -221,7 +222,7 @@ const CalculatorForm = ({ submit = true }) => {
                         <button
                             className={s.btnCenter}
                             type="submit"
-                            onClick={close}
+                            onClick={confirm}
                         >
                             Start losing weight
                         </button>

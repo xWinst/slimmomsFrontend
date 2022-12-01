@@ -15,9 +15,15 @@ const PageNotFound = () => {
             <div className={s.background}>
                 <h2 className={s.title}>404 Page Not Found</h2>
                 <div className={s.img}></div>
-                <p className={s.text}>Oops! The page you're looking for doesn't exist.</p>
+                <p className={s.text}>
+                    Oops! The page you're looking for doesn't exist.
+                </p>
 
-                <Button type={'button'} customType={'primary'} text={'Go home'} onClick={handleBtnClick} />
+                <Button
+                    customType="primary"
+                    text="Go home"
+                    onClick={handleBtnClick}
+                />
             </div>
         </div>
     );

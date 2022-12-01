@@ -71,14 +71,17 @@ const Header = ({ isHidden }) => {
                 )}
 
                 <div className={s.userMenuAndBurgerWrapp}>
+
                     {isLoggedIn && width > 767 && (
                         <UserMenu onOpenModalClick={onModalOpenHandle} />
                     )}
+
                     {isLoggedIn && width < 1280 && (
                         <NavBar isLoggedIn={isLoggedIn} isHidden={isHidden} />
                     )}
                 </div>
             </div>
+
             {isLoggedIn && width < 768 && (
                 <UserMenu onOpenModalClick={onModalOpenHandle} />
             )}
@@ -89,6 +92,7 @@ const Header = ({ isHidden }) => {
                     onClose={onModalCloseHandle}
                 />
             )}
+
         </header>
     );
 };

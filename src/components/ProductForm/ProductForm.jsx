@@ -1,16 +1,19 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Calendar, Icon, Select } from 'components';
+import { Icon, Select } from 'components';
 import { add } from 'redux/productOperation';
+import { useWidth } from 'hooks/useWidth';
 import message from 'helpers/Message';
 import s from './ProductForm.module.css';
+import Button from 'components/Button/Button';
 
-const ProductForm = () => {
+const ProductForm = ({ close }) => {
     const date = useSelector(state => state.product.date);
     const [product, setProduct] = useState({ name: '', weight: '' });
     const [visibleProduct, setVisibleProduct] = useState(null);
     const allProducts = useSelector(state => state.product.allProducts);
     const dispatch = useDispatch();
+    const width = useWidth();
 
     const onChange = e => {
         if (e.target.name === 'name' && e.target.value !== '') {
@@ -26,6 +29,7 @@ const ProductForm = () => {
 
     const addProduct = () => {
         const { name, calories, weight, defaultWeight } = product;
+        console.log('product: ', product);
         if (calories) {
             dispatch(
                 add({
@@ -44,6 +48,7 @@ const ProductForm = () => {
                 'Ok'
             );
         setProduct({ name: '', weight: '' });
+        if (close) close();
     };
 
     const getProduct = product => {
@@ -58,7 +63,6 @@ const ProductForm = () => {
 
     return (
         <>
-            <Calendar />
             <form className={s.form}>
                 <input
                     className={s.name}
@@ -78,14 +82,22 @@ const ProductForm = () => {
                     type="number"
                 />
 
-                <div className={s.button}>
-                    <Icon
-                        icon="plus"
-                        width="14"
-                        height="14"
+                {width < 768 ? (
+                    <Button
+                        text="Add"
+                        customType="primary"
                         onClick={addProduct}
                     />
-                </div>
+                ) : (
+                    <div className={s.button}>
+                        <Icon
+                            icon="plus"
+                            width="14"
+                            height="14"
+                            onClick={addProduct}
+                        />
+                    </div>
+                )}
             </form>
             {visibleProduct && (
                 <Select products={visibleProduct} getProduct={getProduct} />
