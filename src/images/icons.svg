@@ -18,15 +18,21 @@
         <path d="M15.7802 12.5258H13.4681C13.1445 12.5258 12.8822 12.7881 12.8822 13.1117V15.5038C12.8822 15.8274 13.1445 16.0898 13.4681 16.0898H15.7802C16.1038 16.0898 16.3661 15.8274 16.3661 15.5038V13.1117C16.3661 12.7881 16.1038 12.5258 15.7802 12.5258ZM15.1943 14.9179H14.0541V13.6977H15.1943V14.9179Z" fill="#9B9FAA"/>
     </symbol>
     <symbol id = "menuBtn"  viewBox="0 0 18 12">
-        <path d="M0 12H18V10H0V12ZM0 7H18V5H0V7ZM0 0V2H18V0H0Z" />
+        <path d="M0 11H18M0 6H18M0 1H18" stroke-width="2"/>
     </symbol>
     <symbol id = "plus"  viewBox="0 0 14 14">
         <path d="M13.72 7.96003H7.96003V13.72H6.04003V7.96003H0.280029V6.04003H6.04003V0.280029H7.96003V6.04003H13.72V7.96003Z" fill="white"/>
     </symbol>
     <symbol id="close" viewBox="0 0 14 14">
-        <path d="M1 1 12 12M1 13 13 1" stroke-width="2" stroke="#9B9FAA"/>
+        <path d="M1 1 12 12M1 13 13 1" stroke-width="2"/>
     </symbol>
     <symbol id="goBack" fill="none" viewBox="0 0 15 9">
         <path d="M14 1.5V4.5H2M2 5L6 1M2 4L6 8" stroke-width="2"/>
     </symbol>
+
+
+
+
+
+   
 </svg>

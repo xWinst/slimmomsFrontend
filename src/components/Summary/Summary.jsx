@@ -12,32 +12,39 @@ const Summary = () => {
         <div className={s.container}>
             {dailyRate ? (
                 <>
-                    <h2 className={s.title}>
-                        Summary for <span>{date.replaceAll('-', '/')}</span>
-                    </h2>
-                    <ul className={s.summary}>
-                        <li className={s.item}>
-                            <p>Left</p>
-                            <p>{dailyRate - consumed} kcal</p>
-                        </li>
-                        <li className={s.item}>
-                            <p>Consumed</p>
-                            <p>{consumed} kcal</p>
-                        </li>
-                        <li className={s.item}>
-                            <p>Daily rate</p>
-                            <p>{dailyRate} kcal</p>
-                        </li>
-                        <li className={s.item}>
-                            <p>% of normal</p>
-                            <p>{((consumed / dailyRate) * 100).toFixed(2)} %</p>
-                        </li>
-                    </ul>
-                    <h2 className={s.title}>Food not recommended</h2>
-                    <HarmfulProductsList />
+                    <div>
+                        <h2 className={s.title}>
+                            Summary for <span>{date.replaceAll('-', '/')}</span>
+                        </h2>
+                        <ul className={s.summary}>
+                            <li className={s.item}>
+                                <p>Left</p>
+                                <p>{dailyRate - consumed} kcal</p>
+                            </li>
+                            <li className={s.item}>
+                                <p>Consumed</p>
+                                <p>{consumed} kcal</p>
+                            </li>
+                            <li className={s.item}>
+                                <p>Daily rate</p>
+                                <p>{dailyRate} kcal</p>
+                            </li>
+                            <li className={s.item}>
+                                <p>% of normal</p>
+                                <p>
+                                    {((consumed / dailyRate) * 100).toFixed(2)}{' '}
+                                    %
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 className={s.title}>Food not recommended</h2>
+                        <HarmfulProductsList />
+                    </div>
                 </>
             ) : (
-                <>
+                <div>
                     <p className={s.note}>
                         To see the summary you need to calculate the daily
                         calorie intake
@@ -45,7 +52,7 @@ const Summary = () => {
                     <Link className={s.link} to="/calculator">
                         Go to calculate
                     </Link>
-                </>
+                </div>
             )}
         </div>
     );

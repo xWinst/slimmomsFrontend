@@ -1,4 +1,4 @@
-import { Suspense, lazy, useState } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { refresh } from 'redux/userOperations';
@@ -18,6 +18,9 @@ const Login = lazy(() => import('pages/Login/Login'));
 const Register = lazy(() => import('pages/Register/Register'));
 const Diary = lazy(() => import('pages/Diary/Diary'));
 const Calculator = lazy(() => import('pages/Calculator/Calculator'));
+const MobileProductForm = lazy(() =>
+    import('pages/MobileProductForm/MobileProductForm')
+);
 const PageNotFound = lazy(() => import('pages/PageNotFound/PageNotFound'));
 
 const getDate = date => {
@@ -29,21 +32,15 @@ const getDate = date => {
 };
 
 export const App = () => {
-    const [hasRefresh, setHasRefresh] = useState(false);
     const isLoading = useSelector(state => state.user.isLoading);
-    const allProducts = useSelector(state => state.product.allProducts);
-    const date = useSelector(state => state.product.date);
     const dispatch = useDispatch();
 
-    if (!allProducts) dispatch(getAllProducts());
-    if (!date) {
+    useEffect(() => {
+        dispatch(getAllProducts());
         const newDate = getDate(new Date());
         dispatch(chooseDate(newDate));
-    }
-    if (!hasRefresh) {
         dispatch(refresh());
-        setHasRefresh(true);
-    }
+    }, [dispatch]);
 
     return isLoading ? (
         <Loader />
@@ -61,6 +58,10 @@ export const App = () => {
                         <Route element={<PrivateRoute />}>
                             <Route path="calculator" element={<Calculator />} />
                             <Route path="diary" element={<Diary />} />
+                            <Route
+                                path="form"
+                                element={<MobileProductForm />}
+                            />
                         </Route>
                         <Route path="*" element={<PageNotFound />} />
                     </Routes>

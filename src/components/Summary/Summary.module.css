@@ -1,7 +1,7 @@
 .container {
     width: 100vw;
-    margin-left: calc((280px - 100vw) / 2);
-    padding: 40px calc((100vw - 280px) / 2);
+    margin-left: -20px;
+    padding: 40px 20px;
     background-color: var(--bg-tertiary-color);
 }
 
@@ -13,7 +13,8 @@
 }
 
 .summary {
-    width: 270px;
+    width: 100%;
+    max-width: 480px;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -28,16 +29,18 @@
 }
 
 .note {
-    margin: 0 40px 40px -30px;
+    margin: 0 40px 40px 20px;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
 }
 
 .link {
     padding: 13px 30px;
     font-weight: 700;
-    margin-left: 80px;
+    width: 190px;
+    margin: 0 auto;
+    text-align: center;
     border: none;
     border-radius: 30px;
     border: 3px solid var(--accent-color);
@@ -54,12 +57,52 @@
     color: var(--bg-color);
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 480px) {
     .container {
-        padding-left: 100px;
+        margin-left: calc((480px - 100vw) / 2 - 20px);
+        padding: 40px calc((100vw - 480px) / 2 + 20px);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        display: flex;
+        gap: 80px;
+        margin-left: calc((768px - 100vw) / 2 - 32px);
+        padding: 80px calc((100vw - 768px) / 2 + 32px);
+        background-image: url('../../images/background/leaves-loggedIn-tablet.png');
+        background-position: bottom right;
+        background-repeat: no-repeat;
+    }
+
+    .title {
+        margin-bottom: 40px;
     }
 
     .summary {
-        margin-bottom: 60px;
+        width: 280px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .container {
+        display: block;
+        margin-left: 0;
+        margin-top: -246px;
+        padding-left: 100px;
+        padding-top: 255px;
+        background-image: url('../../images/background/leaves-desktop.png');
+
+        background-position: top left 320px;
+    }
+
+    .note {
+        width: 360px;
+        margin: 0 40px 40px -30px;
+        font-size: 16px;
+    }
+
+    .link {
+        margin-left: 60px;
     }
 }

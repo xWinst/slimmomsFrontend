@@ -1,8 +1,6 @@
 .container {
-    /* margin-right: 0px;
-    margin-left: 0; */
     position: relative;
-    width: 150px;
+    width: 160px;
 }
 
 .icon {
@@ -25,28 +23,15 @@
 
 @media screen and (min-width: 768px) {
     .container {
-        position: relative;
-        width: 140px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    .datePicker {
-        /* font-weight: 900;
-        text-transform: uppercase; */
-    }
-}
-
-@media screen and (min-width: 1280px) {
-    .container {
-        /* margin-right: 0px;
-        margin-left: 0; */
-        width: 220px;
+        width: 270px;
     }
 
     .datePicker {
         font-size: 34px;
+        width: 240px;
+    }
+
+    .icon {
+        top: 10px;
     }
 }

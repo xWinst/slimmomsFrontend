@@ -1,9 +1,9 @@
 .form {
     display: flex;
     flex-direction: column;
-    margin-top: 40px;
+    align-items: center;
     margin-bottom: 40px;
-    padding: 0 20px;
+    padding: 48px 20px;
 }
 
 .button {
@@ -28,20 +28,23 @@
 .name {
     composes: input;
     width: 280px;
-    margin-right: 48px;
 }
 
 .gramm {
     composes: input;
     width: 280px;
-    margin-right: 60px;
     margin-bottom: 40px;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 768px) {
     .form {
         flex-direction: row;
-        margin-top: 50px;
+        padding: 40px 0;
+        margin-bottom: 0px;
+    }
+
+    .input {
+        padding-bottom: 20px;
     }
 
     .name {
@@ -53,6 +56,12 @@
 
     .gramm {
         width: 107px;
+        margin-right: 60px;
+        margin-bottom: 0;
         text-align: right;
+    }
+
+    .button {
+        margin-top: 16px;
     }
 }

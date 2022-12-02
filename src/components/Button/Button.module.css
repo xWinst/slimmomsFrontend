@@ -1,55 +1,42 @@
 .button {
-    /* min-width: 176px; */
-    width: 176px;
-    margin: 0 auto;
-    border: none;
+    width: 182px;
+    display: block;
+    margin: 60px auto 0;
     padding: 13px;
     font-weight: 700;
+    border: 2px solid var(--accent-color);
     border-radius: 30px;
+    background-color: var(--bg-color);
+    color: var(--accent-color);
+    box-shadow: var(--box-shadow);
     cursor: pointer;
 }
 
-.primary {
-    color: var(--bg-color);
+.button:hover {
     background-color: var(--accent-color);
+    color: var(--bg-color);
     border: 2px solid var(--accent-color);
-    box-shadow: var(--box-shadow);
     transition: var(--transition);
 }
 
-.primary:hover {
-    color: var(--accent-color);
-    background-color: var(--bg-color);
+.width,
+.modal {
+    composes: button;
+    width: 210px;
 }
 
-.primary:disabled {
-    background-color: rgba(252, 132, 45, 0.5);
-    cursor: auto;
-}
-
-.primary:disabled:hover {
-    transform: scale(1);
-    transition: all 250ms linear;
-}
-
-.secondary {
-    color: var(--accent-color);
-    background-color: var(--bg-color);
-    border: 2px solid var(--accent-color);
-    width: 290px;
-    margin: auto;
-}
-
-.small {
-    min-width: 1px;
-    width: 50px;
-    height: 50px;
+.width {
+    margin: 40px auto;
 }
 
 @media screen and (min-width: 768px) {
-    .smallFromTablet {
-        min-width: 1px;
-        width: 50px;
-        height: 50px;
+    .width {
+        margin-left: 0;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .width {
+        margin-left: 323px;
     }
 }

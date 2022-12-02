@@ -1,27 +1,48 @@
-import { NavLink } from 'react-router-dom';
-import s from './NavBar.module.css';
-import { useSelector } from 'react-redux';
-
-
 import { useState } from 'react';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
+import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Icon, Modal } from 'components';
+import { useWidth } from 'hooks/useWidth';
+import s from './NavBar.module.css';
 
 const getActive = ({ isActive }) => (isActive ? s.linkActive : s.link);
-const getmobileLinkActive = ({ isActive }) => (isActive ? s.mobileNavigationLink : s.mobileNavigationLinkActive);
+const getClass = ({ isActive }) => (isActive ? s.active : s.passive);
+
 const NavBar = ({ isHidden }) => {
+    const [isShowMenu, setIsShowMenu] = useState(false);
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);
-    const hidden = isHidden ? s.isHidden : null; // ховає навігацію на Login Page та Registration Page
+    const width = useWidth();
 
-    const [visibleMenu, setVisibleMenu] = useState(false);
+    const openMenu = () => {
+        setIsShowMenu(true);
+    };
 
+    const closeMenu = () => {
+        setIsShowMenu(false);
+    };
 
-  const handleMenuBtnClick = () => {
-    setVisibleMenu(prev => !prev);
-  };
     return (
-        <nav className={`${s.navigation} ${hidden}`}>
-            {!isLoggedIn && (
+        <nav className={s.navigation}>
+            {isLoggedIn ? (
+                width < 1280 ? (
+                    <Icon
+                        className={s.menu}
+                        icon={isShowMenu ? 'close' : 'menuBtn'}
+                        width="18"
+                        height="12"
+                        onClick={isShowMenu ? closeMenu : openMenu}
+                    />
+                ) : (
+                    <>
+                        <NavLink to="/diary" className={getActive}>
+                            Diary
+                        </NavLink>
+                        <NavLink to="/calculator" className={getActive}>
+                            Calculator
+                        </NavLink>
+                    </>
+                )
+            ) : (
                 <>
                     <NavLink to="/login" className={getActive}>
                         Sign in
@@ -31,44 +52,25 @@ const NavBar = ({ isHidden }) => {
                     </NavLink>
                 </>
             )}
-            {isLoggedIn && (
-                <div className={s.isHidden}>
-                    {visibleMenu ? (
-                        <>
-                            <CloseIcon onClick={handleMenuBtnClick} />
-                            <ul className={s.mobileNavigation}>
-                                <li className={s.mobileNavigationItem}>
-                                    <NavLink
-                                        to="/diary"
-                                        className={getmobileLinkActive}
-                                    >
-                                        Diary
-                                    </NavLink>
-                                </li>
-                                <li className={s.mobileNavigationItem}>
-                                    <NavLink
-                                        to="/calculator"
-                                        className={getmobileLinkActive}
-                                    >
-                                        Calculator
-                                    </NavLink>
-                                </li>
-                            </ul>
-                        </>
-                    ) : (
-                        <MenuIcon onClick={handleMenuBtnClick} />
-                    )}
-                </div>
-            )}
-            {isLoggedIn && (
-                <div className={s.toggleHidden}>
-                    <NavLink to="/diary" className={getActive} >
-                        Diary
-                    </NavLink>
-                    <NavLink to="/calculator" className={getActive} >
-                        Calculator
-                    </NavLink>
-                </div>
+            {isShowMenu && (
+                <Modal onClose={closeMenu}>
+                    <div className={s.modalContainer}>
+                        <NavLink
+                            to="/diary"
+                            className={getClass}
+                            onClick={closeMenu}
+                        >
+                            Diary
+                        </NavLink>
+                        <NavLink
+                            to="/calculator"
+                            className={getClass}
+                            onClick={closeMenu}
+                        >
+                            Calculator
+                        </NavLink>
+                    </div>
+                </Modal>
             )}
         </nav>
     );

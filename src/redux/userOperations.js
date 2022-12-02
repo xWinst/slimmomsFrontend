@@ -109,14 +109,15 @@ export const refresh = createAsyncThunk(
 
 export const setDailyRate = createAsyncThunk(
     'users/dailyRate',
-    async (dailyRate, { rejectWithValue, dispatch }) => {
+    async (info, { rejectWithValue, dispatch }) => {
+        console.log('info: ', info);
         try {
-            const { data } = await axios.patch('/users/dailyRate', dailyRate);
-            return data.dailyRate;
+            const { data } = await axios.patch('/users/dailyRate', info);
+            console.log('result: ', data);
+            const { dailyRate, bloodGroup } = data;
+            return { dailyRate, bloodGroup };
         } catch (error) {
             return rejectWithValue(error);
         }
     }
 );
-
-

@@ -1,24 +1,15 @@
-import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
-import { useWidth } from '../../hooks/useWidth';
+import { createPortal } from 'react-dom';
 import { Icon } from 'components';
 import s from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const Modal = ({ onClose, option = 1, children }) => {
-    // useEffect(() => {
-    //     const handleKeyDown = e => {
-    //         if (e.code === 'Escape') {
-    //             onClose(e);
-    //         }
-    //         document.body.style.overflow = 'hidden';
-    //         return () => (document.body.style.overflow = 'unset');
-    //     };
-
-    //     window.addEventListener('keydown', handleKeyDown);
-    //     return () => window.removeEventListener('keydown', handleKeyDown);
-    // }, [onClose]);
+const Modal = ({ onClose, children }) => {
+    useEffect(() => {
+        document.body.style.overflow = 'hidden';
+        return () => (document.body.style.overflow = 'unset');
+    });
 
     useEffect(() => {
         window.addEventListener('keydown', closeModal);
@@ -37,31 +28,17 @@ const Modal = ({ onClose, option = 1, children }) => {
         }
     };
 
-    const width = useWidth();
-
     return createPortal(
         <div className={s.overlay} onClick={handleBackdropclick}>
-            <div className={option === 1 ? s.modal : s.modalBottom}>
-                {width <= 768 ? (
-                    <div className={option === 1 ? s.muted : s.transparent}>
-                        <Icon
-                            className={s.goBack}
-                            icon="goBack"
-                            width="15"
-                            height="9"
-                            onClick={onClose}
-                        />
-                    </div>
-                ) : (
-                    <Icon
-                        className={s.icon}
-                        icon="close"
-                        width="12"
-                        height="12"
-                        onClick={onClose}
-                    />
-                )}
-                <div className={s.wrapper}>{children}</div>
+            <div className={s.modal}>
+                <Icon
+                    className={s.icon}
+                    icon="close"
+                    width="12"
+                    height="12"
+                    onClick={onClose}
+                />
+                {children}
             </div>
         </div>,
         modalRoot

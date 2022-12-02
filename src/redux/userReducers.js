@@ -19,6 +19,7 @@ const initialState = {
 const userSlice = createSlice({
     name: 'user',
     initialState,
+
     reducers: {
         google: (state, action) => {
             state.userData = action.payload.user;
@@ -27,6 +28,7 @@ const userSlice = createSlice({
             state.isLoggedIn = true;
         },
     },
+
     extraReducers: {
         [registration.pending]: state => {
             state.isLoading = true;
@@ -73,7 +75,6 @@ const userSlice = createSlice({
         },
         [refresh.fulfilled]: (state, action) => {
             state.refreshToken = action.payload.refreshToken;
-            // state.isLoading = false;
         },
         [refresh.rejected]: (state, action) => {
             state.isLoading = false;
@@ -93,12 +94,16 @@ const userSlice = createSlice({
         },
 
         [setDailyRate.fulfilled]: (state, action) => {
-            state.userData.dailyRate = action.payload;
+            state.userData.dailyRate = action.payload.dailyRate;
+            state.userData.bloodGroup = action.payload.bloodGroup;
+            console.log('action.payload: ', action.payload);
         },
         [setDailyRate.rejected]: (state, action) => {
             console.log('refresh error: ', action.payload);
         },
     },
 });
+
 export const { google } = userSlice.actions;
+
 export default userSlice.reducer;

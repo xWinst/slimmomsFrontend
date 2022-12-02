@@ -19,11 +19,7 @@ const PageNotFound = () => {
                     Oops! The page you're looking for doesn't exist.
                 </p>
 
-                <Button
-                    customType="primary"
-                    text="Go home"
-                    onClick={handleBtnClick}
-                />
+                <Button onClick={handleBtnClick}>Go home</Button>
             </div>
         </div>
     );

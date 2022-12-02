@@ -12,9 +12,8 @@ const Calendar = () => {
     useEffect(() => {
         const changeDate = () => {
             const year = date.getFullYear();
-            const month = date.getMonth() + 1;
-            const day = date.getDate();
-
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+            const day = date.getDate().toString().padStart(2, '0');
             dispatch(chooseDate(day + '-' + month + '-' + year));
         };
         changeDate();

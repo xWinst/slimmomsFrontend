@@ -1,23 +1,22 @@
-import s from '../LoginForm/LoginForm.module.css';
 import { useForm } from 'react-hook-form';
-// import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import GoogleLogo from '../../images/googleLogo.svg';
 import { registration } from 'redux/userOperations';
+import { Button } from 'components';
+import GoogleLogo from 'images/googleLogo.svg';
+import s from '../LoginForm/LoginForm.module.css';
 
 const RegisterForm = () => {
     const {
         register,
-        formState: { errors, isValid },
+        formState: { errors },
         handleSubmit,
         reset,
-    } = useForm({ mode: 'onBlur' });
+    } = useForm({ mode: 'onSubmit' });
 
     const dispatch = useDispatch();
 
     const onHandleSubmit = data => {
         dispatch(registration(data));
-
         reset();
     };
 
@@ -27,7 +26,7 @@ const RegisterForm = () => {
             <label className={s.formLabel}>
                 <input
                     {...register('name', {
-                        required: 'Need to feel up this field',
+                        required: 'This is a required field',
                         minLength: {
                             value: 2,
                             message: 'Minimum name length - 6 symbols',
@@ -50,7 +49,7 @@ const RegisterForm = () => {
             <label className={s.formLabel}>
                 <input
                     {...register('email', {
-                        required: 'Need to feel up this field',
+                        required: 'This is a required field',
                         minLength: {
                             value: 6,
                             message: 'Minimum email length - 6 symbols',
@@ -73,7 +72,7 @@ const RegisterForm = () => {
             <label className={s.formLabel}>
                 <input
                     {...register('password', {
-                        required: 'Need to feel up this field',
+                        required: 'This is a required field',
                         minLength: {
                             value: 6,
                             message: 'Minimum password length - 6 symbols',
@@ -93,13 +92,10 @@ const RegisterForm = () => {
                 </div>
             </label>
 
-            <button type="submit" disabled={!isValid} className={s.formBtn}>
-                Register
-            </button>
-
+            <Button type="submit">Register</Button>
             <a
                 className={s.googleBtn}
-                href="http://localhost:4000/api/users/google/"
+                href={`${process.env.REACT_APP_BASE_URL}/users/google`}
             >
                 <img src={GoogleLogo} alt="Google logo" />
             </a>

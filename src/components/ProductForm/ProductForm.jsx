@@ -29,7 +29,7 @@ const ProductForm = ({ close }) => {
 
     const addProduct = () => {
         const { name, calories, weight, defaultWeight } = product;
-        console.log('product: ', product);
+
         if (calories) {
             dispatch(
                 add({
@@ -83,11 +83,7 @@ const ProductForm = ({ close }) => {
                 />
 
                 {width < 768 ? (
-                    <Button
-                        text="Add"
-                        customType="primary"
-                        onClick={addProduct}
-                    />
+                    <Button onClick={addProduct}>Add</Button>
                 ) : (
                     <div className={s.button}>
                         <Icon

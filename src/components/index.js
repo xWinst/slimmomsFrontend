@@ -18,4 +18,5 @@ export { default as ProductForm } from './ProductForm/ProductForm';
 export { default as Select } from './Select/Select';
 export { default as CalculatorForm } from './CalculatorForm/CalculatorForm';
 export { default as HarmfulProductsList } from './HarmfulProductsList/HarmfulProductsList';
-export { default as ConfirmationModal } from './ConfirmationModal/ConfirmationModal.jsx';
+export { default as Logo } from './Logo/Logo';
+export { default as Button } from './Button/Button';

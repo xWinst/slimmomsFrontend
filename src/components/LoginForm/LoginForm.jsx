@@ -1,47 +1,31 @@
-import s from './LoginForm.module.css';
-import GoogleLogo from '../../images/googleLogo.svg';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/userOperations';
+import { Button } from 'components';
+import GoogleLogo from 'images/googleLogo.svg';
+import s from './LoginForm.module.css';
 
 const LoginForm = () => {
     const {
         register,
-        formState: { errors, isValid },
-        // handleSubmit,
-    } = useForm({ mode: 'onBlur' });
+        formState: { errors },
+        handleSubmit,
+        reset,
+    } = useForm({ mode: 'onSubmit' });
     const dispatch = useDispatch();
-    const [formFields, setFormFields] = useState({
-        email: '',
-        password: '',
-    });
 
-    const handleChange = event => {
-        const { name, value } = event.currentTarget;
-        setFormFields(prevState => ({ ...prevState, [name]: value }));
-    };
-
-    const reset = () => {
-        setFormFields({
-            email: '',
-            password: '',
-        });
-    };
-
-    const onHandleSubmit = e => {
-        e.preventDefault();
-        dispatch(logIn(formFields));
-
+    const onHandleSubmit = data => {
+        dispatch(logIn(data));
         reset();
     };
+
     return (
-        <form className={s.loginForm} onSubmit={onHandleSubmit}>
-            <h2 className={s.formHeading}>Log in</h2>
+        <form className={s.loginForm} onSubmit={handleSubmit(onHandleSubmit)}>
+            <h2 className={s.formHeading}>Sign in</h2>
             <label className={s.formLabel}>
                 <input
                     {...register('email', {
-                        required: 'Need to feel up this field',
+                        required: 'This is a required field',
                         minLength: {
                             value: 6,
                             message: 'Minimum email length - 6 symbols',
@@ -49,13 +33,8 @@ const LoginForm = () => {
                     })}
                     className={s.formInput}
                     type="email"
-                    name="email"
-                    value={formFields.email}
-                    onChange={handleChange}
                     title="Please enter valid email address, for example  'example@gmail.com'"
                     placeholder="Email *"
-                    min-length="6"
-                    required
                 />
                 <div className={s.errorCont}>
                     {errors.email && (
@@ -68,7 +47,7 @@ const LoginForm = () => {
             <label className={s.formLabel}>
                 <input
                     {...register('password', {
-                        required: 'Need to feel up this field',
+                        required: 'This is a required field',
                         minLength: {
                             value: 6,
                             message: 'Minimum password length - 6 symbols',
@@ -76,13 +55,8 @@ const LoginForm = () => {
                     })}
                     className={s.formInput}
                     type="password"
-                    name="password"
-                    value={formFields.password}
-                    onChange={handleChange}
                     title="Please enter your password. Minimum length 8 symbols"
                     placeholder="Password *"
-                    min-length="6"
-                    required
                 />
                 <div className={s.errorCont}>
                     {errors.password && (
@@ -93,12 +67,10 @@ const LoginForm = () => {
                 </div>
             </label>
 
-            <button type="submit" disabled={!isValid} className={s.formBtn}>
-                Login
-            </button>
+            <Button type="submit">Login</Button>
             <a
                 className={s.googleBtn}
-                href="http://localhost:4000/api/users/google"
+                href={`${process.env.REACT_APP_BASE_URL}/users/google`}
             >
                 <img src={GoogleLogo} alt="Google logo" />
             </a>

@@ -1,29 +1,27 @@
-.userMenuWrapper {
-    display: flex;
+.container {
     width: 100vw;
-    margin-left: calc((320px - 100vw) / 2);
+    background-color: var(--bg-secondary-color);
+}
+
+.userMenuWrapper {
+    max-width: 480px;
+    display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding: 4px calc((100vw - 320px) / 2);
-    background-color: var(--bg-secondary-color);
+    padding: 2px 0;
+    margin: 0 auto;
 }
 
 .loginName {
     font-weight: 700;
-    font-size: 14px;
-    line-height: 13px;
     text-align: right;
-    letter-spacing: 0.04em;
     margin-right: 20px;
 }
 
 .exitBtn {
     font-weight: 700;
-    font-size: 14px;
-    line-height: 13px;
-    letter-spacing: 0.04em;
 
-    color: #9b9faa;
+    color: var(--muted-color);
     border: none;
     cursor: pointer;
     background-color: transparent;
@@ -31,7 +29,25 @@
     border-left: 2px solid var(--line-color);
 }
 @media screen and (min-width: 768px) {
-    .userMenuWrapper {
+    .container {
+        position: absolute;
+        width: 200px;
+        top: 21px;
+        right: calc((100vw - 568px) / 2);
         background-color: transparent;
+    }
+    .userMenuWrapper {
+        max-width: var(--tablet);
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .container {
+        top: 115px;
+        right: calc((100vw - 1248px) / 2);
+    }
+
+    .userMenuWrapper {
+        max-width: var(--desctop);
     }
 }
