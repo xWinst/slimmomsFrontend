@@ -12,6 +12,7 @@ const ProductForm = ({ close }) => {
     const [product, setProduct] = useState({ name: '', weight: '' });
     const [visibleProduct, setVisibleProduct] = useState(null);
     const allProducts = useSelector(state => state.product.allProducts);
+    const lang = useSelector(state => state.user.lang);
     const dispatch = useDispatch();
     const width = useWidth();
 
@@ -43,9 +44,9 @@ const ProductForm = ({ close }) => {
             );
         } else
             message.warning(
-                'You must select a product from the list',
-                `Please try again`,
-                'Ok'
+                lang.addProductWarningSelect,
+                lang.addProductWarningTry,
+                lang.addProductWarningOk
             );
         setProduct({ name: '', weight: '' });
         if (close) close();
@@ -67,7 +68,7 @@ const ProductForm = ({ close }) => {
                 <input
                     className={s.name}
                     name="name"
-                    placeholder="Enter product name"
+                    placeholder={lang.placeholderProductName}
                     value={product.name}
                     onChange={onChange}
                     autoComplete="false"
@@ -76,21 +77,21 @@ const ProductForm = ({ close }) => {
                 <input
                     className={s.gramm}
                     name="weight"
-                    placeholder="Grams"
+                    placeholder={lang.placeholderProductWeight}
                     value={product.weight}
                     onChange={onChange}
                     type="number"
                 />
 
                 {width < 768 ? (
-                    <Button onClick={addProduct}>Add</Button>
+                    <Button onClick={addProduct}>{lang.add}</Button>
                 ) : (
-                    <div className={s.button}>
+                    <div className={s.button} onClick={addProduct}>
                         <Icon
                             icon="plus"
                             width="14"
                             height="14"
-                            onClick={addProduct}
+                            // onClick={addProduct}
                         />
                     </div>
                 )}

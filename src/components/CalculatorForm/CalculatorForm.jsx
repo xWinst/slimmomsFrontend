@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setDailyRate } from 'redux/userOperations';
 import { HarmfulProductsList, Modal, Button, Icon } from 'components';
 import s from './CalculatorForm.module.css';
@@ -10,6 +10,7 @@ const CalculatorForm = ({ submit = true }) => {
     const [isShowModal, setIsShowModal] = useState(false);
     const [rate, setRate] = useState();
     const [blood, setBlood] = useState();
+    const lang = useSelector(state => state.user.lang);
     const navigate = useNavigate();
     const {
         register,
@@ -49,8 +50,8 @@ const CalculatorForm = ({ submit = true }) => {
     return (
         <div className={s.container}>
             <h2 className={s.title}>
-                Calculate your daily calorie <br />
-                intake right now
+                {lang.caclulateTitleStart} <br />
+                {lang.caclulateTitleFinish}
             </h2>
             <form>
                 <div className={s.form}>
@@ -59,19 +60,17 @@ const CalculatorForm = ({ submit = true }) => {
                             className={s.input}
                             type="number"
                             {...register('height', {
-                                required: 'This is a required field',
+                                required: lang.requiredField,
                                 min: {
                                     value: 100,
-                                    message:
-                                        'Height must be between 100 - 220 cm',
+                                    message: lang.heightRange,
                                 },
                                 max: {
                                     value: 220,
-                                    message:
-                                        'Height must be between 100 - 220 cm',
+                                    message: lang.heightRange,
                                 },
                             })}
-                            placeholder="Height *"
+                            placeholder={lang.placeholderHeight}
                         />
                         <p className={s.error}>
                             {errors?.height ? (
@@ -86,19 +85,17 @@ const CalculatorForm = ({ submit = true }) => {
                             className={s.input}
                             type="number"
                             {...register('age', {
-                                required: 'This is a required field',
+                                required: lang.requiredField,
                                 min: {
                                     value: 15,
-                                    message:
-                                        'Age must be between 15 - 99 years old',
+                                    message: lang.ageRange,
                                 },
                                 max: {
                                     value: 99,
-                                    message:
-                                        'Age must be between 15 - 99 years old',
+                                    message: lang.ageRange,
                                 },
                             })}
-                            placeholder="Age *"
+                            placeholder={lang.placeholderAge}
                         />
                         <p className={s.error}>
                             {errors?.age ? (
@@ -113,19 +110,17 @@ const CalculatorForm = ({ submit = true }) => {
                             className={s.input}
                             type="number"
                             {...register('weight', {
-                                required: 'This is a required field',
+                                required: lang.requiredField,
                                 min: {
                                     value: 40,
-                                    message:
-                                        'Current weight must be between 40 - 250 kg',
+                                    message: lang.weightRange,
                                 },
                                 max: {
                                     value: 250,
-                                    message:
-                                        'Current weight must be between 40 - 250 kg',
+                                    message: lang.weightRange,
                                 },
                             })}
-                            placeholder="Current weight *"
+                            placeholder={lang.placeholderWeight}
                         />
                         <p className={s.error}>
                             {errors?.weight ? (
@@ -140,19 +135,17 @@ const CalculatorForm = ({ submit = true }) => {
                             className={s.input}
                             type="number"
                             {...register('desiredWeight', {
-                                required: 'This is a required field',
+                                required: lang.requiredField,
                                 min: {
                                     value: 40,
-                                    message:
-                                        'Desired weight must be between 40 - 120 kg',
+                                    message: lang.desiredWeightRange,
                                 },
                                 max: {
                                     value: 120,
-                                    message:
-                                        'Desired weight must be between 40 - 120 kg',
+                                    message: lang.desiredWeightRange,
                                 },
                             })}
-                            placeholder="Desired weight *"
+                            placeholder={lang.placeholderDesiredWeight}
                         />
                         <p className={s.error}>
                             {errors?.desiredWeight ? (
@@ -162,7 +155,7 @@ const CalculatorForm = ({ submit = true }) => {
                             )}
                         </p>
                     </label>
-                    <legend className={s.legend}>Blood type *</legend>
+                    <legend className={s.legend}>{lang.bloodType}</legend>
                     <fieldset className={s.group} {...register('bloodGroup')}>
                         <div className={s.btns}>
                             <label className={getClass('1')}>
@@ -210,7 +203,7 @@ const CalculatorForm = ({ submit = true }) => {
                     type="submit"
                     onClick={handleSubmit(onSubmit)}
                 >
-                    Start losing weight
+                    {lang.buttonStartloseweight}
                 </Button>
             </form>
             {isShowModal && (
@@ -226,18 +219,18 @@ const CalculatorForm = ({ submit = true }) => {
                             />
                         </div>
                         <p className={s.modalTitle}>
-                            Your recommended daily
-                            <br /> calorie intake is
+                            {lang.modalTitleStart}
+                            <br /> {lang.modalTitleFinish}
                         </p>
                         <p className={s.rate}>
                             <span className={s.value}>{rate}</span>
                             &nbsp;&nbsp;kcal
                         </p>
                         <div className={s.line}></div>
-                        <p className={s.text}>Foods you should not eat</p>
+                        <p className={s.text}>{lang.modalListTitle}</p>
                         <HarmfulProductsList blood={blood} />
                         <Button cn="modal" type="submit" onClick={confirm}>
-                            Start losing weight
+                            {lang.buttonStartloseweight}
                         </Button>
                     </div>
                 </Modal>

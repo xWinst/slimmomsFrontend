@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import message from 'helpers/Message';
+import { ua, en } from 'localization';
 import {
     logIn,
     logOut,
@@ -15,6 +16,7 @@ const initialState = {
     accessToken: null,
     refreshToken: null,
     userData: null,
+    lang: en,
 };
 const userSlice = createSlice({
     name: 'user',
@@ -26,6 +28,19 @@ const userSlice = createSlice({
             state.accessToken = action.payload.accessToken;
             state.refreshToken = action.payload.refreshToken;
             state.isLoggedIn = true;
+        },
+
+        languageSelection: (state, action) => {
+            switch (action.payload) {
+                case 'ua':
+                    state.lang = ua;
+                    break;
+                case 'en':
+                    state.lang = en;
+                    break;
+                default:
+                    state.lang = ua;
+            }
         },
     },
 
@@ -104,6 +119,6 @@ const userSlice = createSlice({
     },
 });
 
-export const { google } = userSlice.actions;
+export const { google, languageSelection } = userSlice.actions;
 
 export default userSlice.reducer;

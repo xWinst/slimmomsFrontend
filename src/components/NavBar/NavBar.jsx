@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Icon, Modal } from 'components';
+import { Icon, LanguageBar, Modal } from 'components';
 import { useWidth } from 'hooks/useWidth';
 import s from './NavBar.module.css';
 
@@ -11,6 +11,7 @@ const getClass = ({ isActive }) => (isActive ? s.active : s.passive);
 const NavBar = ({ isHidden }) => {
     const [isShowMenu, setIsShowMenu] = useState(false);
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);
+    const lang = useSelector(state => state.user.lang);
     const width = useWidth();
 
     const openMenu = () => {
@@ -35,21 +36,23 @@ const NavBar = ({ isHidden }) => {
                 ) : (
                     <>
                         <NavLink to="/diary" className={getActive}>
-                            Diary
+                            {lang.diary}
                         </NavLink>
                         <NavLink to="/calculator" className={getActive}>
-                            Calculator
+                            {lang.calculator}
                         </NavLink>
+                        <LanguageBar />
                     </>
                 )
             ) : (
                 <>
                     <NavLink to="/login" className={getActive}>
-                        Sign in
+                        {lang.login}
                     </NavLink>
                     <NavLink to="/register" className={getActive}>
-                        Registration
+                        {lang.register}
                     </NavLink>
+                    <LanguageBar />
                 </>
             )}
             {isShowMenu && (
@@ -60,15 +63,16 @@ const NavBar = ({ isHidden }) => {
                             className={getClass}
                             onClick={closeMenu}
                         >
-                            Diary
+                            {lang.diary}
                         </NavLink>
                         <NavLink
                             to="/calculator"
                             className={getClass}
                             onClick={closeMenu}
                         >
-                            Calculator
+                            {lang.calculator}
                         </NavLink>
+                        <LanguageBar />
                     </div>
                 </Modal>
             )}

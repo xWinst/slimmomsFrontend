@@ -1,0 +1,35 @@
+.container {
+    position: relative;
+    margin-left: 10px;
+}
+
+.btn {
+    border: none;
+    background-color: transparent;
+}
+
+.icon {
+    pointer-events: none;
+    cursor: pointer;
+}
+
+.list {
+    position: absolute;
+    left: -70px;
+    top: 20px;
+    padding: 3px;
+    font-size: 10px;
+    text-transform: none;
+    box-shadow: 0 0 5px var(--muted-color);
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: var(--bg-color);
+}
+
+.item:hover {
+    background-color: var(--accent-color);
+}

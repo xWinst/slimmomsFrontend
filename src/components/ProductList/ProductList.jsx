@@ -1,12 +1,13 @@
+import { useSelector } from 'react-redux';
 import { Icon } from 'components';
 import s from './ProductList.module.css';
 
 const ProductList = ({ list, remove }) => {
+    const lang = useSelector(state => state.user.lang);
+
     return (
         <>
-            {list.length === 0 && (
-                <p className={s.empty}>There are no records for this day</p>
-            )}
+            {list.length === 0 && <p className={s.empty}>{lang.emptyText}</p>}
             <ul className={s.list}>
                 {list.map(product => (
                     <li className={s.product} key={product._id}>

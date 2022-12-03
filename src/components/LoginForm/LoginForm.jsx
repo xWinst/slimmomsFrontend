@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from 'redux/userOperations';
 import { Button } from 'components';
 import GoogleLogo from 'images/googleLogo.svg';
@@ -12,6 +12,7 @@ const LoginForm = () => {
         handleSubmit,
         reset,
     } = useForm({ mode: 'onSubmit' });
+    const lang = useSelector(state => state.user.lang);
     const dispatch = useDispatch();
 
     const onHandleSubmit = data => {
@@ -25,21 +26,21 @@ const LoginForm = () => {
             <label className={s.formLabel}>
                 <input
                     {...register('email', {
-                        required: 'This is a required field',
+                        required: lang.requiredField,
                         minLength: {
                             value: 6,
-                            message: 'Minimum email length - 6 symbols',
+                            message: lang.emailRange,
                         },
                     })}
                     className={s.formInput}
                     type="email"
-                    title="Please enter valid email address, for example  'example@gmail.com'"
-                    placeholder="Email *"
+                    title={lang.emailValidation}
+                    placeholder={lang.emailPlaceholder}
                 />
                 <div className={s.errorCont}>
                     {errors.email && (
                         <p className={s.errorText}>
-                            {errors.email.message || 'Invalid email'}
+                            {errors.email.message || lang.emailNotValide}
                         </p>
                     )}
                 </div>
@@ -47,27 +48,27 @@ const LoginForm = () => {
             <label className={s.formLabel}>
                 <input
                     {...register('password', {
-                        required: 'This is a required field',
+                        required: lang.requiredField,
                         minLength: {
                             value: 6,
-                            message: 'Minimum password length - 6 symbols',
+                            message: lang.passwordRange,
                         },
                     })}
                     className={s.formInput}
                     type="password"
-                    title="Please enter your password. Minimum length 8 symbols"
-                    placeholder="Password *"
+                    title={lang.passwordValidation}
+                    placeholder={lang.passwordPlaceholder}
                 />
                 <div className={s.errorCont}>
                     {errors.password && (
                         <p className={s.errorText}>
-                            {errors.password.message || 'Invalid password'}
+                            {errors.password.message || lang.passwordNotValide}
                         </p>
                     )}
                 </div>
             </label>
 
-            <Button type="submit">Login</Button>
+            <Button type="submit">{lang.loginText}</Button>
             <a
                 className={s.googleBtn}
                 href={`${process.env.REACT_APP_BASE_URL}/users/google`}

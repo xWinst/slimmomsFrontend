@@ -5,6 +5,7 @@ import { logOut } from 'redux/userOperations';
 const UserMenu = () => {
     const dispatch = useDispatch();
     const userName = useSelector(state => state.user.userData?.name);
+    const lang = useSelector(state => state.user.lang);
     const onExitBtnHandle = () => {
         dispatch(logOut());
     };
@@ -17,7 +18,7 @@ const UserMenu = () => {
                     type="button"
                     onClick={onExitBtnHandle}
                 >
-                    Exit
+                    {lang.exit}
                 </button>
             </div>
         </div>

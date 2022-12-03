@@ -2,6 +2,7 @@
     width: 280px;
     font-weight: 700;
     font-size: 18px;
+    letter-spacing: 0.01em;
     color: var(--main-color);
 }
 
@@ -181,6 +182,7 @@
         width: 600px;
         margin-bottom: 50px;
         font-size: 34px;
+        letter-spacing: 0.01em;
     }
 
     .form {

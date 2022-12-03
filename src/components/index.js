@@ -20,3 +20,4 @@ export { default as CalculatorForm } from './CalculatorForm/CalculatorForm';
 export { default as HarmfulProductsList } from './HarmfulProductsList/HarmfulProductsList';
 export { default as Logo } from './Logo/Logo';
 export { default as Button } from './Button/Button';
+export { default as LanguageBar } from './LanguageBar/LanguageBar';

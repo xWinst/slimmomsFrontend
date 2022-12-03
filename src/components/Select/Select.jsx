@@ -3,6 +3,7 @@ import s from './Select.module.css';
 
 const Select = ({ products, getProduct }) => {
     const bloodGroup = useSelector(state => state.user.userData?.bloodGroup);
+    const lang = useSelector(state => state.user.lang);
 
     const getClass = product => {
         return product.groupBloodNotAllowed[bloodGroup] ? s.warning : s.item;
@@ -19,8 +20,12 @@ const Select = ({ products, getProduct }) => {
                     >
                         <p className={s.title}>{product.title.ua}</p>
                         <div className={s.thumb}>
-                            <p>{product.weight} g</p>
-                            <p>{product.calories} kcal</p>
+                            <p>
+                                {product.weight} {lang.gramm}
+                            </p>
+                            <p>
+                                {product.calories} {lang.kcal}
+                            </p>
                         </div>
                     </li>
                 ))}
