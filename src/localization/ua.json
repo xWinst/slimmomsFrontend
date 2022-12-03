@@ -1,4 +1,5 @@
 {
+    "lang": "ua",
     "requiredField": "Це обов’язкове поле",
     "heightRange": "Зріст повинна бути в межах 100-220 см",
     "placeholderHeight": "Зріст *",
@@ -63,5 +64,6 @@
     "goHome": "Перейти на домашню сторінку",
     "emptyText": "За цей день записів немає",
     "caclulateTitleStart": "Розрахуйте свою денну",
-    "caclulateTitleFinish": "норму калорій"
+    "caclulateTitleFinish": "норму калорій",
+    "confirm": "Ви впевнені?"
 }

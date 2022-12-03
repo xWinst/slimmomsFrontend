@@ -5,7 +5,7 @@ import s from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const Modal = ({ onClose, children }) => {
+const Modal = ({ onClose, style, children }) => {
     useEffect(() => {
         document.body.style.overflow = 'hidden';
         return () => (document.body.style.overflow = 'unset');
@@ -28,9 +28,10 @@ const Modal = ({ onClose, children }) => {
         }
     };
 
+    console.log('style: ', style);
     return createPortal(
         <div className={s.overlay} onClick={handleBackdropclick}>
-            <div className={s.modal}>
+            <div className={s.modal} style={style}>
                 <Icon
                     className={s.icon}
                     icon="close"

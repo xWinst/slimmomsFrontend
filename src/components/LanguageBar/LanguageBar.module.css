@@ -29,6 +29,9 @@
     cursor: pointer;
     background-color: var(--bg-color);
 }
+.item:not(:last-child) {
+    margin-bottom: 3px;
+}
 
 .item:hover {
     background-color: var(--accent-color);

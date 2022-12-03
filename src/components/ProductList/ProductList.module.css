@@ -50,8 +50,8 @@
 
 .kcal {
     composes: info;
-    width: 53px;
-    margin-right: 14px;
+    width: 57px;
+    margin-right: 12px;
 }
 
 .icon {

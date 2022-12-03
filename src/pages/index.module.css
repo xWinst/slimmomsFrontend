@@ -26,6 +26,18 @@
     cursor: pointer;
 }
 
+.modal {
+    padding: 55px 20px 20px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: var(--bg-color);
+    box-shadow: 0 0 5px var(--muted-color);
+}
+
+.thumb {
+    display: flex;
+}
+
 @keyframes spinner {
     40% {
         transform: rotate(360deg);

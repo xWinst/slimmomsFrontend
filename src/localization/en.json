@@ -1,4 +1,5 @@
 {
+    "lang": "en",
     "requiredField": "This is a required field",
     "heightRange": "Height must be between 100 - 220 cm",
     "placeholderHeight": "Height *",
@@ -63,5 +64,6 @@
     "goHome": "Go home",
     "emptyText": "There are no records for this day",
     "caclulateTitleStart": "Calculate your daily calorie",
-    "caclulateTitleFinish": "intake right now"
+    "caclulateTitleFinish": "intake right now",
+    "confirm": "Are you sure?"
 }

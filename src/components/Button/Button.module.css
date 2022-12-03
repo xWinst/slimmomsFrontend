@@ -25,6 +25,13 @@
     width: 210px;
 }
 
+.width90 {
+    composes: button;
+    width: 100px;
+    pointer-events: auto;
+    margin-top: 18px;
+}
+
 .width {
     margin: 40px auto;
 }

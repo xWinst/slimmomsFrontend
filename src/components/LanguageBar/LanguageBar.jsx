@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { languageSelection } from 'redux/userReducers';
 import { Icon } from 'components';
 import s from './LanguageBar.module.css';
 
-const LanguageBar = () => {
-    const [currentLang, setCurrentLang] = useState('en');
+const LanguageBar = ({ big }) => {
+    const lang = useSelector(state => state.user.lang);
+    const [currentLang, setCurrentLang] = useState(lang.lang);
+    console.log('currentLang: ', currentLang);
+    console.log('lang: ', lang);
     const [isShow, setIsShow] = useState(false);
     const dispatch = useDispatch();
 
@@ -55,12 +58,12 @@ const LanguageBar = () => {
                 <Icon
                     className={s.icon}
                     icon={currentLang}
-                    width="24"
-                    height="16"
+                    width={big ? 48 : 24}
+                    height={big ? 32 : 16}
                 />
             </button>
             {isShow && (
-                <ul className={s.list}>
+                <ul className={s.list} style={big && { top: 36 }}>
                     <li
                         className={s.item}
                         data-key="ua"
@@ -69,8 +72,8 @@ const LanguageBar = () => {
                         <Icon
                             className={s.icon}
                             icon="ua"
-                            width="24"
-                            height="16"
+                            width={big ? 48 : 24}
+                            height={big ? 32 : 16}
                         />
                         &nbsp;Українська
                     </li>
@@ -82,8 +85,8 @@ const LanguageBar = () => {
                         <Icon
                             className={s.icon}
                             icon="en"
-                            width="24"
-                            height="16"
+                            width={big ? 48 : 24}
+                            height={big ? 32 : 16}
                         />
                         &nbsp;English
                     </li>

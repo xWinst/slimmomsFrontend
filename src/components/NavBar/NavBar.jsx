@@ -72,7 +72,7 @@ const NavBar = ({ isHidden }) => {
                         >
                             {lang.calculator}
                         </NavLink>
-                        <LanguageBar />
+                        <LanguageBar big />
                     </div>
                 </Modal>
             )}
