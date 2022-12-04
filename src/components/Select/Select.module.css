@@ -7,7 +7,7 @@
 .list {
     position: absolute;
     left: 20px;
-    top: -240px;
+    top: -232px;
     max-height: 280px;
     padding: 10px 13px;
     background: #ffffff;
@@ -58,7 +58,7 @@
 
     .list {
         width: 470px;
-        top: -35px;
+        top: 0;
         left: 0;
     }
 
@@ -68,11 +68,5 @@
 
     .thumb {
         gap: 20px;
-    }
-}
-
-@media screen and (min-width: 1280px) {
-    .list {
-        top: -40px;
     }
 }

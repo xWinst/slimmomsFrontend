@@ -38,6 +38,49 @@
     display: flex;
 }
 
+.reports {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.thumbBtns {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: -30px;
+    justify-content: space-around;
+}
+
+.legend {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dailyRate {
+    width: 50px;
+    height: 0;
+    border: 2px solid #2222ee;
+}
+
+.consumed {
+    composes: dailyRate;
+    border: 2px solid #ff881e;
+}
+
+.weight {
+    composes: dailyRate;
+    border: 2px solid #88ff1e;
+}
+
 @keyframes spinner {
     40% {
         transform: rotate(360deg);
@@ -50,6 +93,17 @@
 @media screen and (min-width: 768px) {
     .button {
         display: none;
+    }
+
+    .legend {
+        flex-direction: row;
+        gap: 25px;
+        margin-top: 40px;
+    }
+
+    .thumbBtns {
+        flex-direction: row;
+        margin-top: -70px;
     }
 }
 

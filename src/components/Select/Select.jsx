@@ -14,7 +14,7 @@ const Select = ({ products, getProduct }) => {
             <ul className={s.list}>
                 {products.map(product => (
                     <li
-                        key={product._id}
+                        key={product.title.ua}
                         className={getClass(product)}
                         onClick={() => getProduct(product)}
                     >

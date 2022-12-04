@@ -50,6 +50,10 @@ img {
     display: block;
 }
 
+canvas {
+    display: block;
+}
+
 p,
 h2 {
     padding: 0;

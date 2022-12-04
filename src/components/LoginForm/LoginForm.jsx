@@ -1,11 +1,13 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from 'redux/userOperations';
-import { Button } from 'components';
+import { Button, Icon } from 'components';
 import GoogleLogo from 'images/googleLogo.svg';
 import s from './LoginForm.module.css';
 
 const LoginForm = () => {
+    const [isOpenEye, setIsOpenEye] = useState(false);
     const {
         register,
         formState: { errors },
@@ -18,6 +20,10 @@ const LoginForm = () => {
     const onHandleSubmit = data => {
         dispatch(logIn(data));
         reset();
+    };
+
+    const showPassword = () => {
+        setIsOpenEye(state => !state);
     };
 
     return (
@@ -55,9 +61,16 @@ const LoginForm = () => {
                         },
                     })}
                     className={s.formInput}
-                    type="password"
+                    type={isOpenEye ? 'text' : 'password'}
                     title={lang.passwordValidation}
                     placeholder={lang.passwordPlaceholder}
+                />
+                <Icon
+                    className={s.icon}
+                    icon={isOpenEye ? `eye` : `closedEye`}
+                    onClick={showPassword}
+                    width="20"
+                    height="20"
                 />
                 <div className={s.errorCont}>
                     {errors.password && (

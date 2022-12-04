@@ -19,7 +19,9 @@ const ProductList = ({ list, remove }) => {
                             icon="close"
                             width="12"
                             height="12"
-                            onClick={() => remove(product._id)}
+                            onClick={() =>
+                                remove(product._id, product.calories)
+                            }
                         />
                     </li>
                 ))}

@@ -7,8 +7,6 @@ import s from './LanguageBar.module.css';
 const LanguageBar = ({ big }) => {
     const lang = useSelector(state => state.user.lang);
     const [currentLang, setCurrentLang] = useState(lang.lang);
-    console.log('currentLang: ', currentLang);
-    console.log('lang: ', lang);
     const [isShow, setIsShow] = useState(false);
     const dispatch = useDispatch();
 

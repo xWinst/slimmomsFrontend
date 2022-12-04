@@ -1,0 +1,45 @@
+.container {
+    margin-top: 10px;
+    position: relative;
+}
+
+.list {
+    position: relative;
+    margin-top: 34px;
+    padding-bottom: 30px;
+}
+
+.legend {
+    position: absolute;
+    top: 0;
+    font-size: 9px;
+    transform: rotateZ(-90deg);
+}
+
+.maxW {
+    position: absolute;
+    left: 5px;
+    top: 87px;
+    font-size: 10px;
+}
+
+.minW {
+    composes: maxW;
+    top: 367px;
+}
+
+.maxK {
+    composes: maxW;
+    top: 7px;
+}
+
+.minK {
+    composes: maxW;
+    top: 257px;
+}
+
+@media screen and (min-width: 768px) {
+    .legend {
+        font-size: 12px;
+    }
+}

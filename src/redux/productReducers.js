@@ -1,17 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 import message from 'helpers/Message';
 import {
-    getAllProducts,
     add,
     getUserProducts,
     deleteUserProducts,
+    updateWeight,
+    getReports,
 } from './productOperation';
+import allProduct from 'db/allProducts.json';
 
 const initialState = {
-    allProducts: null,
+    allProducts: allProduct,
     products: null,
     date: null,
     consumed: 0,
+    reports: null,
 };
 
 const productSlice = createSlice({
@@ -23,21 +26,9 @@ const productSlice = createSlice({
         },
     },
     extraReducers: {
-        [getAllProducts.fulfilled]: (state, action) => {
-            state.allProducts = action.payload;
-        },
-
-        [getAllProducts.rejected]: (state, action) => {
-            message.error(
-                'Getting allProducts error',
-                `${action.payload.message}`,
-                'Ok'
-            );
-        },
-
         [add.fulfilled]: (state, action) => {
-            state.products.push(action.payload);
-            state.consumed += action.payload.calories;
+            state.products = action.payload.products;
+            state.consumed = action.payload.consumed;
         },
 
         [add.rejected]: (state, action) => {
@@ -49,12 +40,9 @@ const productSlice = createSlice({
         },
 
         [getUserProducts.fulfilled]: (state, action) => {
-            state.products = action.payload;
-            let result = 0;
-            action.payload.forEach(product => {
-                result += product.calories;
-            });
-            state.consumed = result;
+            const { products, consumed } = action.payload;
+            state.products = products;
+            state.consumed = consumed;
         },
 
         [getUserProducts.rejected]: (state, action) => {
@@ -66,19 +54,33 @@ const productSlice = createSlice({
         },
 
         [deleteUserProducts.fulfilled]: (state, action) => {
-            state.products = state.products.filter(
-                product => product._id !== action.payload
-            );
-            let result = 0;
-            state.products.forEach(product => {
-                result += product.calories;
-            });
-            state.consumed = result;
+            state.products = action.payload.products;
+            state.consumed = action.payload.consumed;
         },
 
         [deleteUserProducts.rejected]: (state, action) => {
             message.error(
-                'Getting UserProducts error',
+                'Deleted UserProducts error',
+                `${action.payload.message}`,
+                'Ok'
+            );
+        },
+
+        [updateWeight.rejected]: (state, action) => {
+            message.error(
+                'Update weight  error',
+                `${action.payload.message}`,
+                'Ok'
+            );
+        },
+
+        [getReports.fulfilled]: (state, action) => {
+            state.reports = action.payload;
+        },
+
+        [getReports.rejected]: (state, action) => {
+            message.error(
+                'Get reports error',
                 `${action.payload.message}`,
                 'Ok'
             );

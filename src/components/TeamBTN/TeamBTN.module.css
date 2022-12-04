@@ -21,8 +21,8 @@ path.team__path {
         z-index: 100;
     }
     .team__icon {
-        width: 200px;
-        height: 197px;
+        width: 130px;
+        height: 110px;
         border-radius: 50%;
         background-color: transparent;
 
@@ -39,15 +39,16 @@ path.team__path {
     /* btn */
     .btn__container {
         position: fixed;
-        bottom: 20px;
-        right: 20px;
+        bottom: 40px;
+        right: 66px;
         width: 30px;
         height: 30px;
         z-index: 100;
     }
     .team__icon {
         z-index: 300;
-        width: 35px;
+        width: 90px;
+        height: 66px;
         border-radius: 50%;
 
         background-color: transparent;

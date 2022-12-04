@@ -65,6 +65,15 @@
     border: 4px solid #fc842d;
 }
 
+.icon {
+    position: absolute;
+    top: 0;
+    right: 40px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
 @media screen and (min-width: 768px) {
     .loginForm {
         margin-top: 60px;

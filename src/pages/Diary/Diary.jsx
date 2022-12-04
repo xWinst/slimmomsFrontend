@@ -10,6 +10,7 @@ import {
     Calendar,
     Modal,
     Button,
+    WeightForm,
 } from 'components';
 import { useWidth } from 'hooks/useWidth';
 import s from '../index.module.css';
@@ -19,7 +20,7 @@ const Diary = () => {
     const date = useSelector(state => state.product.date);
     const lang = useSelector(state => state.user.lang);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [id, setId] = useState();
+    const [product, setProduct] = useState();
 
     const dispatch = useDispatch();
     const width = useWidth();
@@ -29,15 +30,15 @@ const Diary = () => {
     }, [dispatch, date]);
 
     const remove = () => {
-        dispatch(deleteUserProducts(id));
+        dispatch(deleteUserProducts({ date, product }));
         setIsModalOpen(false);
     };
 
     const close = () => {
         setIsModalOpen(false);
     };
-    const openModal = id => {
-        setId(id);
+    const openModal = (id, calories) => {
+        setProduct({ id, calories });
         setIsModalOpen(true);
     };
 
@@ -45,6 +46,7 @@ const Diary = () => {
         <div className={s.container}>
             <div className={s.side}>
                 <Calendar />
+                <WeightForm />
                 {width > 767 && <ProductForm />}
                 <ProductList list={products ?? []} remove={openModal} />
             </div>

@@ -25,6 +25,12 @@
     width: 210px;
 }
 
+.chart {
+    composes: button;
+    width: 210px;
+    margin-top: 15px;
+}
+
 .width90 {
     composes: button;
     width: 100px;

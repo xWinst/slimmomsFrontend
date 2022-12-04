@@ -28,7 +28,6 @@ const Modal = ({ onClose, style, children }) => {
         }
     };
 
-    console.log('style: ', style);
     return createPortal(
         <div className={s.overlay} onClick={handleBackdropclick}>
             <div className={s.modal} style={style}>

@@ -65,5 +65,11 @@
     "emptyText": "There are no records for this day",
     "caclulateTitleStart": "Calculate your daily calorie",
     "caclulateTitleFinish": "intake right now",
-    "confirm": "Are you sure?"
+    "confirm": "Are you sure?",
+    "yourWeight": "Your current weight",
+    "errorWeight": "Weight must be at least 20kg",
+    "reports": "Reports",
+    "weight": "Weight",
+    "month": "Last 30 days",
+    "all": "During all this time"
 }

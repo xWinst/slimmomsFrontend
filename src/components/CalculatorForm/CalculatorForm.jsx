@@ -10,6 +10,7 @@ const CalculatorForm = ({ submit = true }) => {
     const [isShowModal, setIsShowModal] = useState(false);
     const [rate, setRate] = useState();
     const [blood, setBlood] = useState();
+    const date = useSelector(state => state.product.date);
     const lang = useSelector(state => state.user.lang);
     const navigate = useNavigate();
     const {
@@ -31,7 +32,8 @@ const CalculatorForm = ({ submit = true }) => {
             10 * (weight - desiredWeight);
         setRate(dailyRate);
         setBlood(bloodGroup);
-        if (submit) dispatch(setDailyRate({ dailyRate, bloodGroup }));
+        if (submit)
+            dispatch(setDailyRate({ date, dailyRate, weight, bloodGroup }));
         else setIsShowModal(true);
         reset();
     };

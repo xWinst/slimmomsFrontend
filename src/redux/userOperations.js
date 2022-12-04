@@ -91,7 +91,6 @@ export const refresh = createAsyncThunk(
         const isLoggedIn = thunkAPI.getState().user.isLoggedIn;
         if (!refreshToken || isLoggedIn)
             return thunkAPI.rejectWithValue('CANCEL');
-        setToken(refreshToken);
 
         try {
             const { data } = await axios.post('/users/refresh', {
@@ -110,10 +109,8 @@ export const refresh = createAsyncThunk(
 export const setDailyRate = createAsyncThunk(
     'users/dailyRate',
     async (info, { rejectWithValue, dispatch }) => {
-        console.log('info: ', info);
         try {
             const { data } = await axios.patch('/users/dailyRate', info);
-            console.log('result: ', data);
             const { dailyRate, bloodGroup } = data;
             return { dailyRate, bloodGroup };
         } catch (error) {

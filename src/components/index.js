@@ -21,3 +21,5 @@ export { default as HarmfulProductsList } from './HarmfulProductsList/HarmfulPro
 export { default as Logo } from './Logo/Logo';
 export { default as Button } from './Button/Button';
 export { default as LanguageBar } from './LanguageBar/LanguageBar';
+export { default as WeightForm } from './WeightForm/WeightForm';
+export { default as Charts } from './Charts/Charts';

@@ -2,7 +2,6 @@ import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { refresh } from 'redux/userOperations';
-import { getAllProducts } from 'redux/productOperation';
 import { chooseDate } from 'redux/productReducers';
 
 import {
@@ -18,6 +17,7 @@ const Login = lazy(() => import('pages/Login/Login'));
 const Register = lazy(() => import('pages/Register/Register'));
 const Diary = lazy(() => import('pages/Diary/Diary'));
 const Calculator = lazy(() => import('pages/Calculator/Calculator'));
+const Reports = lazy(() => import('pages/Reports/Reports'));
 const MobileProductForm = lazy(() =>
     import('pages/MobileProductForm/MobileProductForm')
 );
@@ -25,8 +25,8 @@ const PageNotFound = lazy(() => import('pages/PageNotFound/PageNotFound'));
 
 const getDate = date => {
     const year = date.getFullYear();
-    const month = date.getMonth();
-    const day = date.getDate();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
 
     return day + '-' + month + '-' + year;
 };
@@ -36,7 +36,6 @@ export const App = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getAllProducts());
         const newDate = getDate(new Date());
         dispatch(chooseDate(newDate));
         dispatch(refresh());
@@ -58,6 +57,7 @@ export const App = () => {
                         <Route element={<PrivateRoute />}>
                             <Route path="calculator" element={<Calculator />} />
                             <Route path="diary" element={<Diary />} />
+                            <Route path="reports" element={<Reports />} />
                             <Route
                                 path="form"
                                 element={<MobileProductForm />}

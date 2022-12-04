@@ -31,7 +31,7 @@
     "passwordValidation": "Будь ласка, введіть свій пароль. Мінімальна довжина 8 символів",
     "passwordPlaceholder": "Пароль *",
     "passwordNotValide": "Недійсний пароль",
-    "titleChuchin": "Олег Чучін",
+    "titleChuchin": "Олег Чучин",
     "roleChuchin": "Керівник команди",
     "titleBondarenko": "Володимир Бондаренко",
     "roleBondarenko": "Скрам-майстер",
@@ -65,5 +65,11 @@
     "emptyText": "За цей день записів немає",
     "caclulateTitleStart": "Розрахуйте свою денну",
     "caclulateTitleFinish": "норму калорій",
-    "confirm": "Ви впевнені?"
+    "confirm": "Ви впевнені?",
+    "yourWeight": "Ваша поточна вага",
+    "errorWeight": "Вага має бути не менше 20кг",
+    "reports": "Звіти",
+    "weight": "Вага",
+    "month": "За весь час",
+    "all": "За останні 30 днів"
 }

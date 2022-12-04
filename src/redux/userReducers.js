@@ -111,7 +111,6 @@ const userSlice = createSlice({
         [setDailyRate.fulfilled]: (state, action) => {
             state.userData.dailyRate = action.payload.dailyRate;
             state.userData.bloodGroup = action.payload.bloodGroup;
-            console.log('action.payload: ', action.payload);
         },
         [setDailyRate.rejected]: (state, action) => {
             console.log('refresh error: ', action.payload);

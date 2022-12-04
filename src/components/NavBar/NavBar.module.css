@@ -10,8 +10,8 @@
     color: var(--muted-color);
 }
 
-.link:first-child,
-.linkActive:first-child {
+.link:not(:last-child),
+.linkActive:not(:last-child) {
     margin-right: 15px;
 }
 

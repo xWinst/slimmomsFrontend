@@ -41,6 +41,9 @@ const NavBar = ({ isHidden }) => {
                         <NavLink to="/calculator" className={getActive}>
                             {lang.calculator}
                         </NavLink>
+                        <NavLink to="/reports" className={getActive}>
+                            {lang.reports}
+                        </NavLink>
                         <LanguageBar />
                     </>
                 )
@@ -71,6 +74,13 @@ const NavBar = ({ isHidden }) => {
                             onClick={closeMenu}
                         >
                             {lang.calculator}
+                        </NavLink>
+                        <NavLink
+                            to="/reports"
+                            className={getClass}
+                            onClick={closeMenu}
+                        >
+                            {lang.reports}
                         </NavLink>
                         <LanguageBar big />
                     </div>

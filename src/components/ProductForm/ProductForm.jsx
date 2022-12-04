@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Icon, Select } from 'components';
+import { Icon, Select, Button } from 'components';
 import { add } from 'redux/productOperation';
 import { useWidth } from 'hooks/useWidth';
 import message from 'helpers/Message';
 import s from './ProductForm.module.css';
-import Button from 'components/Button/Button';
 
 const ProductForm = ({ close }) => {
     const date = useSelector(state => state.product.date);
@@ -34,12 +33,15 @@ const ProductForm = ({ close }) => {
         if (calories) {
             dispatch(
                 add({
-                    name,
-                    weight,
                     date,
-                    calories: Math.round(
-                        (calories * Number.parseFloat(weight)) / defaultWeight
-                    ),
+                    product: {
+                        name,
+                        weight,
+                        calories: Math.round(
+                            (calories * Number.parseFloat(weight)) /
+                                defaultWeight
+                        ),
+                    },
                 })
             );
         } else
@@ -87,12 +89,7 @@ const ProductForm = ({ close }) => {
                     <Button onClick={addProduct}>{lang.add}</Button>
                 ) : (
                     <div className={s.button} onClick={addProduct}>
-                        <Icon
-                            icon="plus"
-                            width="14"
-                            height="14"
-                            // onClick={addProduct}
-                        />
+                        <Icon icon="plus" width="14" height="14" />
                     </div>
                 )}
             </form>
