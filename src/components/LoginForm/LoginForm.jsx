@@ -58,9 +58,9 @@ const LoginForm = () => {
                     <input
                         {...register('password', {
                             required: lang.requiredField,
-                            minLength: {
-                                value: 6,
-                                message: lang.passwordRange,
+                            pattern: {
+                                value: /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
+                                message: 'wrong pattern',
                             },
                         })}
                         className={s.formInput}

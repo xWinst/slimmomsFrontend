@@ -57,7 +57,7 @@ const userSlice = createSlice({
             state.isLoading = false;
             message.error(
                 'Registration error',
-                `${action.payload.message}`,
+                `${action.payload.response.data.message}`,
                 'Ok'
             );
         },
@@ -74,7 +74,11 @@ const userSlice = createSlice({
         },
         [logIn.rejected]: (state, action) => {
             state.isLoading = false;
-            message.error('LogIn error', `${action.payload.message}`, 'Ok');
+            message.error(
+                'LogIn error',
+                `${action.payload.response.data.message}`,
+                'Ok'
+            );
         },
         [logOut.fulfilled]: state => {
             state.isLoading = false;
@@ -84,7 +88,11 @@ const userSlice = createSlice({
             state.userData = null;
         },
         [logOut.rejected]: (state, action) => {
-            message.error('LogOut error', `${action.payload.message}`, 'Ok');
+            message.error(
+                'LogOut error',
+                `${action.payload.response.data.message}`,
+                'Ok'
+            );
         },
         [refresh.pending]: state => {
             state.isLoading = true;

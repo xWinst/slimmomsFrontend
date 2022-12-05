@@ -14,9 +14,11 @@ export const setToken = token => {
 axios.interceptors.response.use(
     response => response,
     async error => {
-        if (error.response.status === 401) {
+        console.log('error.response: ', error.response);
+        console.log('data.message: ', error.response.data.message);
+        if (error.response.data.message === 'Not authorized') {
             const refreshToken = localStorage.getItem('refreshToken');
-
+            console.log('Bingo!!!!!!!!!!!!!!!!!!');
             try {
                 const { data } = await axios.post('/users/refresh', {
                     refreshToken,
