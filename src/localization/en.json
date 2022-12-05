@@ -71,5 +71,6 @@
     "reports": "Reports",
     "weight": "Weight",
     "month": "Last 30 days",
-    "all": "During all this time"
+    "all": "During all this time",
+    "socialTitle": "Or continue with:"
 }

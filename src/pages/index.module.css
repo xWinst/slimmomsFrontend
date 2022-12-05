@@ -27,6 +27,7 @@
 }
 
 .modal {
+    transform: translate(50%, 50%);
     padding: 55px 20px 20px;
     text-align: center;
     border-radius: 10px;
@@ -104,6 +105,10 @@
     .thumbBtns {
         flex-direction: row;
         margin-top: -70px;
+    }
+
+    .modal {
+        transform: none;
     }
 }
 

@@ -28,6 +28,7 @@ const userSlice = createSlice({
             state.accessToken = action.payload.accessToken;
             state.refreshToken = action.payload.refreshToken;
             state.isLoggedIn = true;
+            state.isLoading = false;
         },
 
         languageSelection: (state, action) => {

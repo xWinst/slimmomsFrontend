@@ -1,6 +1,6 @@
 .container {
     position: relative;
-    margin-left: 10px;
+    margin-left: -5px;
 }
 
 .btn {
@@ -35,4 +35,10 @@
 
 .item:hover {
     background-color: var(--accent-color);
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        margin-left: 10px;
+    }
 }
