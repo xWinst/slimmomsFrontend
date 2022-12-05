@@ -36,13 +36,12 @@ const LoginForm = () => {
                     <input
                         {...register('email', {
                             required: lang.requiredField,
-                            minLength: {
-                                value: 6,
-                                message: lang.emailRange,
+                            pattern: {
+                                value: /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
+                                message: 'wrong pattern',
                             },
                         })}
                         className={s.formInput}
-                        type="email"
                         title={lang.emailValidation}
                         placeholder={lang.emailPlaceholder}
                     />
@@ -58,9 +57,9 @@ const LoginForm = () => {
                     <input
                         {...register('password', {
                             required: lang.requiredField,
-                            pattern: {
-                                value: /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
-                                message: 'wrong pattern',
+                            minLength: {
+                                value: 6,
+                                message: lang.passwordRange,
                             },
                         })}
                         className={s.formInput}
