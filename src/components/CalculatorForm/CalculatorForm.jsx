@@ -210,6 +210,13 @@ const CalculatorForm = ({ submit = true }) => {
             </form>
             {isShowModal && (
                 <Modal onClose={close}>
+                    <Icon
+                        className={s.icon}
+                        icon="close"
+                        width="12"
+                        height="12"
+                        onClick={close}
+                    />
                     <div className={s.modalContainer}>
                         <div className={s.close}>
                             <Icon

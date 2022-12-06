@@ -31,7 +31,7 @@
         <path d="M13.72 7.96003H7.96003V13.72H6.04003V7.96003H0.280029V6.04003H6.04003V0.280029H7.96003V6.04003H13.72V7.96003Z" fill="white"/>
     </symbol>
     <symbol id="close" viewBox="0 0 14 14">
-        <path d="M1 1 12 12M1 13 13 1" stroke-width="2"/>
+        <path d="M1 1 13 13M1 13 13 1" stroke-width="2"/>
     </symbol>
     <symbol id="goBack" fill="none" viewBox="0 0 15 9">
         <path d="M14 1.5V4.5H2M2 5L6 1M2 4L6 8" stroke-width="2"/>

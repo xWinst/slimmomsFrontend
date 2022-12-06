@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Icon } from 'components';
 import s from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
@@ -31,13 +30,6 @@ const Modal = ({ onClose, style, children }) => {
     return createPortal(
         <div className={s.overlay} onClick={handleBackdropclick}>
             <div className={s.modal} style={style}>
-                <Icon
-                    className={s.icon}
-                    icon="close"
-                    width="12"
-                    height="12"
-                    onClick={onClose}
-                />
                 {children}
             </div>
         </div>,

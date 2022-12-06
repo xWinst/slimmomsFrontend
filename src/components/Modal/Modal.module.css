@@ -15,10 +15,6 @@
     width: 100%;
 }
 
-.icon {
-    display: none;
-}
-
 @media screen and (min-width: 768px) {
     .overlay {
         background-color: var(--bg-overlay-color);
@@ -30,20 +26,5 @@
         width: 672px;
         height: 573px;
         transform: translate(-50%, -50%);
-    }
-
-    .icon {
-        position: absolute;
-        top: 23px;
-        right: 23px;
-        display: block;
-        cursor: pointer;
-        pointer-events: auto;
-        stroke: var(--accent2-color);
-        z-index: 1300;
-    }
-
-    .icon:hover {
-        stroke: var(--accent-color);
     }
 }

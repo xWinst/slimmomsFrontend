@@ -29,6 +29,10 @@
     border-left: 2px solid var(--line-color);
 }
 
+.exitBtn:hover {
+    color: var(--accent-color);
+}
+
 .modal {
     transform: translate(50%, 50%);
     padding: 55px 20px 20px;

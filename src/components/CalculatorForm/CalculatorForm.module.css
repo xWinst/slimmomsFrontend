@@ -167,6 +167,10 @@
     color: var(--accent-color);
 }
 
+.icon {
+    display: none;
+}
+
 @media screen and (min-width: 480px) {
     .close {
         padding-left: calc((100vw - 440px) / 2);
@@ -206,6 +210,21 @@
         font-size: 26px;
         margin-bottom: 20px;
         text-align: center;
+    }
+
+    .icon {
+        position: absolute;
+        top: 23px;
+        right: 23px;
+        display: block;
+        cursor: pointer;
+        pointer-events: auto;
+        stroke: var(--accent2-color);
+        z-index: 50;
+    }
+
+    .icon:hover {
+        stroke: var(--accent-color);
     }
 }
 

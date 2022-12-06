@@ -10,6 +10,14 @@
     color: var(--muted-color);
 }
 
+.link:hover {
+    color: var(--accent-color);
+}
+
+.passive:hover {
+    color: var(--bg-color);
+}
+
 .link:not(:last-child),
 .linkActive:not(:last-child) {
     margin-right: 15px;
@@ -41,23 +49,25 @@
 }
 
 .modalContainer {
+    position: absolute;
+    top: 41px;
+    width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
-    margin-top: 42px;
     padding-top: 60px;
     background-color: var(--accent2-color);
     pointer-events: auto;
+    z-index: 100;
 }
 
 @media (min-width: 768px) {
     .modalContainer {
-        width: 100vw;
+        top: calc((737px - 100vh) / 2);
         padding-top: 100px;
-        margin-left: calc((672px - 100vw) / 2);
-        margin-top: -44px;
+        margin-left: calc((671px - 100vw) / 2);
     }
 
     .active {
