@@ -4,7 +4,7 @@ import { Button, Modal } from 'components';
 import { logOut } from 'redux/userOperations';
 import s from './UserMenu.module.css';
 
-const UserMenu = () => {
+const UserMenu = ({ onClick }) => {
     const userName = useSelector(state => state.user.userData?.name);
     const lang = useSelector(state => state.user.lang);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,6 +20,7 @@ const UserMenu = () => {
     const logout = () => {
         dispatch(logOut());
         setIsModalOpen(false);
+        onClick();
     };
 
     return (

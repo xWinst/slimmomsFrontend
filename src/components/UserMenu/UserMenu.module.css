@@ -34,7 +34,7 @@
 }
 
 .modal {
-    transform: translate(50%, 50%);
+    transform: translate(calc((100vw - 280px) / 2), 70%);
     padding: 55px 20px 20px;
     text-align: center;
     border-radius: 10px;

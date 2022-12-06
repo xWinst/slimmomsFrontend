@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Icon, LanguageBar, Modal } from 'components';
@@ -8,11 +8,15 @@ import s from './NavBar.module.css';
 const getActive = ({ isActive }) => (isActive ? s.linkActive : s.link);
 const getClass = ({ isActive }) => (isActive ? s.active : s.passive);
 
-const NavBar = ({ isHidden }) => {
+const NavBar = ({ hidden }) => {
     const [isShowMenu, setIsShowMenu] = useState(false);
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);
     const lang = useSelector(state => state.user.lang);
     const width = useWidth();
+
+    useEffect(() => {
+        setIsShowMenu(false);
+    }, [hidden]);
 
     const openMenu = () => {
         setIsShowMenu(true);

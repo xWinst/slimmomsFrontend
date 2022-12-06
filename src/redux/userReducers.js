@@ -80,6 +80,11 @@ const userSlice = createSlice({
                 'Ok'
             );
         },
+
+        [logOut.pending]: state => {
+            state.isLoading = true;
+        },
+
         [logOut.fulfilled]: state => {
             state.isLoading = false;
             state.isLoggedIn = false;
