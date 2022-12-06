@@ -20,6 +20,7 @@ const HarmfulProductsList = ({ blood }) => {
     const harmfulProducts = allProducts.filter(
         product => !product.groupBloodNotAllowed[bloodGroup]
     );
+    const lang = useSelector(state => state.user.lang);
 
     const indexes = getRandomProduct(harmfulProducts.length);
 
@@ -27,7 +28,7 @@ const HarmfulProductsList = ({ blood }) => {
         <ol className={s.list}>
             {indexes.map(i => (
                 <li key={i} className={s.item}>
-                    {harmfulProducts[i].title.ua}
+                    {harmfulProducts[i].title[lang.lang]}
                 </li>
             ))}
         </ol>

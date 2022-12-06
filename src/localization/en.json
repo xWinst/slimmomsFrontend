@@ -72,5 +72,6 @@
     "weight": "Weight",
     "month": "Last 30 days",
     "all": "During all this time",
-    "socialTitle": "Or continue with:"
+    "socialTitle": "Or continue with:",
+    "invalidEmail": "invalid email"
 }

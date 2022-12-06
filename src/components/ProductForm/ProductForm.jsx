@@ -8,7 +8,7 @@ import s from './ProductForm.module.css';
 
 const ProductForm = ({ close }) => {
     const date = useSelector(state => state.product.date);
-    const [product, setProduct] = useState({ name: '', weight: '' });
+    const [product, setProduct] = useState({ title: '', weight: '' });
     const [visibleProduct, setVisibleProduct] = useState(null);
     const allProducts = useSelector(state => state.product.allProducts);
     const lang = useSelector(state => state.user.lang);
@@ -16,9 +16,9 @@ const ProductForm = ({ close }) => {
     const width = useWidth();
 
     const onChange = e => {
-        if (e.target.name === 'name' && e.target.value !== '') {
+        if (e.target.name === 'title' && e.target.value !== '') {
             const array = allProducts.filter(product =>
-                product.title.ua
+                product.title[lang.lang]
                     .toLowerCase()
                     .includes(e.target.value.toLowerCase())
             );
@@ -50,13 +50,14 @@ const ProductForm = ({ close }) => {
                 lang.addProductWarningTry,
                 lang.addProductWarningOk
             );
-        setProduct({ name: '', weight: '' });
+        setProduct({ title: '', weight: '' });
         if (close) close();
     };
 
     const getProduct = product => {
         setProduct({
-            name: product.title.ua,
+            name: [product.title.ua, product.title.en],
+            title: product.title[lang.lang],
             weight: product.weight,
             calories: product.calories,
             defaultWeight: product.weight,
@@ -64,14 +65,19 @@ const ProductForm = ({ close }) => {
         setVisibleProduct(null);
     };
 
+    const closeList = () => {
+        setVisibleProduct(null);
+        setProduct({ title: '', weight: '' });
+    };
+
     return (
         <>
             <form className={s.form}>
                 <input
                     className={s.name}
-                    name="name"
+                    name="title"
                     placeholder={lang.placeholderProductName}
-                    value={product.name}
+                    value={product.title}
                     onChange={onChange}
                     autoComplete="false"
                 />
@@ -94,7 +100,11 @@ const ProductForm = ({ close }) => {
                 )}
             </form>
             {visibleProduct && (
-                <Select products={visibleProduct} getProduct={getProduct} />
+                <Select
+                    products={visibleProduct}
+                    getProduct={getProduct}
+                    close={closeList}
+                />
             )}
         </>
     );

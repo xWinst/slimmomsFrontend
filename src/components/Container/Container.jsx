@@ -6,24 +6,14 @@ import s from './Container.module.css';
 const Container = ({ children }) => {
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);
     const [open, setOpen] = useState(false);
+
     const closeModal = () => {
-        setOpen(!open);
+        setOpen(false);
     };
 
-    const toggleModal = () => {
-        setOpen(!open);
+    const openModal = () => {
+        setOpen(true);
     };
-
-    useEffect(() => {
-        const handleCloseModal = event => {
-            if (event.code === 'Escape') {
-                setOpen(!open);
-            }
-        };
-
-        window.addEventListener('keydown', handleCloseModal);
-        return () => window.removeEventListener('keydown', handleCloseModal);
-    }, [open]);
 
     useEffect(() => {
         const body = document.querySelector('body');
@@ -39,8 +29,8 @@ const Container = ({ children }) => {
     return (
         <div className={isLoggedIn ? s.containerLoggedIn : s.container}>
             {children}
-            <TeamBTN handler={toggleModal} />
-            {open && <ModalTeam open={open} handler={closeModal} />}
+            <TeamBTN handler={openModal} />
+            {open && <ModalTeam close={closeModal} />}
         </div>
     );
 };

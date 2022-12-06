@@ -195,9 +195,9 @@ const Charts = ({ isAlltime }) => {
 
         if (period) {
             paintGrid(canvas.current);
-            paintChar(canvas2.current, 'weight', '#88FF1E');
+            paintChar(canvas2.current, 'dailyRate', '#2222EE');
             paintChar(canvas3.current, 'consumed', '#FF881E');
-            paintChar(canvas4.current, 'dailyRate', '#2222EE');
+            paintChar(canvas4.current, 'weight', '#88FF1E');
         }
     };
 

@@ -66,6 +66,10 @@ const productSlice = createSlice({
             );
         },
 
+        [updateWeight.fulfilled]: (state, action) => {
+            message.sucsess('Weight has been successfully recorded');
+        },
+
         [updateWeight.rejected]: (state, action) => {
             message.error(
                 'Update weight  error',

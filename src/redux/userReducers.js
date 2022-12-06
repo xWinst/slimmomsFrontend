@@ -99,6 +99,7 @@ const userSlice = createSlice({
         },
         [refresh.fulfilled]: (state, action) => {
             state.refreshToken = action.payload.refreshToken;
+            state.isLoading = false;
         },
         [refresh.rejected]: (state, action) => {
             state.isLoading = false;

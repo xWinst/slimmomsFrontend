@@ -5,7 +5,7 @@ import { Icon } from 'components';
 import s from './WeightForm.module.css';
 
 const WeightForm = () => {
-    const [weight, setWeight] = useState();
+    const [weight, setWeight] = useState('');
     const [error, setError] = useState();
     const date = useSelector(state => state.product.date);
     const lang = useSelector(state => state.user.lang);

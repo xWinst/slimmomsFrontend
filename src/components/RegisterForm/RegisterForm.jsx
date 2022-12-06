@@ -64,7 +64,7 @@ const RegisterForm = () => {
                             required: lang.requiredField,
                             pattern: {
                                 value: /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
-                                message: 'wrong pattern',
+                                message: lang.invalidEmail,
                             },
                         })}
                         className={s.formInput}
@@ -120,15 +120,22 @@ const RegisterForm = () => {
                     href={`${process.env.REACT_APP_BASE_URL}/users/google`}
                 >
                     <Icon icon="google" width="26" height="26" />
-                    Google
+                    <div>
+                        <span className={s.blue}>G</span>
+                        <span className={s.red}>o</span>
+                        <span className={s.yellow}>o</span>
+                        <span className={s.blue}>g</span>
+                        <span className={s.green}>l</span>
+                        <span className={s.red}>e</span>
+                    </div>
                 </a>
 
                 <a
-                    className={s.googleBtn}
+                    className={s.facebookBtn}
                     href={`${process.env.REACT_APP_BASE_URL}/users/facebook`}
                 >
                     <Icon icon="facebook" width="32" height="32" />
-                    Facebook
+                    facebook
                 </a>
             </div>
         </div>
