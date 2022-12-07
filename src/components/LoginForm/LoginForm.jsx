@@ -17,6 +17,7 @@ const LoginForm = () => {
     const dispatch = useDispatch();
 
     const onHandleSubmit = data => {
+        data.email = data.email.toLowerCase();
         dispatch(logIn(data));
         reset();
     };
@@ -37,7 +38,7 @@ const LoginForm = () => {
                         {...register('email', {
                             required: lang.requiredField,
                             pattern: {
-                                value: /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
+                                value: /^([A-Za-z0-9_-]+\.)*[A-Za-z0-9_-]+@[A-Za-z0-9_-]+(\.[A-Za-z0-9_-]+)*\.[A-Za-z]{2,6}$/,
                                 message: lang.invalidEmail,
                             },
                         })}
